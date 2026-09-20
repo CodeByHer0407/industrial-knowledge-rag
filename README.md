@@ -58,16 +58,39 @@ conda activate industrial-rag
 ```bash
 python -m pip install -r requirements.txt
 ```
+### Run the application
+
+Start the FastAPI development server:
+
+```powershell
+python -m uvicorn app.main:app --host 127.0.0.1 --port 8765 --reload
+```
+
+Open the API documentation:
+
+http://127.0.0.1:8765/docs
+
+Health check endpoint:
+
+http://127.0.0.1:8765/health
+
+### Run tests
+
+```powershell
+python -m pytest -q
+```
+
+The current test suite verifies the health check endpoint.
 
 ## Development Roadmap
 
-- [ ] FastAPI backend setup
+- [x] FastAPI backend setup
 - [ ] PDF ingestion and chunking
 - [ ] Embedding generation and FAISS indexing
 - [ ] RAG question-answering pipeline
 - [ ] Source citation support
 - [ ] Retrieval evaluation
-- [ ] Automated testing
+- [ ] Automated testing (expand beyond health check)
 - [ ] Docker deployment
 - [ ] CI/CD integration
 
