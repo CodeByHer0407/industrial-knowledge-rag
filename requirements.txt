@@ -4,6 +4,13 @@ fastapi[standard]
 # PDF Processing
 pymupdf
 
+# Embeddings
+sentence-transformers
+numpy
+
+# Vector Search
+faiss-cpu
+
 # Testing
 pytest
 httpx
