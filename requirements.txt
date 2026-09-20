@@ -1,0 +1,6 @@
+# Backend
+fastapi[standard]
+
+# Testing
+pytest
+httpx

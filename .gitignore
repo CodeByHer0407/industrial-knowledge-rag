@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+.conda/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local documents and generated vector indexes
+data/raw/
+data/index/
+*.faiss
+*.pkl
+
+# OS files
+.DS_Store
+Thumbs.db
