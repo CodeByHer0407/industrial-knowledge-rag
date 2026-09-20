@@ -85,15 +85,39 @@ The current test suite verifies the health check endpoint.
 ## Development Roadmap
 
 - [x] FastAPI backend setup
-- [ ] PDF ingestion and chunking
+- [x] PDF ingestion and text extraction
+- [x] Preserve source and page metadata
+- [ ] Document chunking
 - [ ] Embedding generation and FAISS indexing
 - [ ] RAG question-answering pipeline
 - [ ] Source citation support
 - [ ] Retrieval evaluation
-- [ ] Automated testing (expand beyond health check)
+- [ ] Complete automated testing
 - [ ] Docker deployment
 - [ ] CI/CD integration
 
-## Documentation
+## PDF Ingestion
 
-Architecture, implementation decisions, evaluation results, and setup instructions will be added as development progresses.
+The application currently supports extracting text from
+text-based PDF documents using PyMuPDF.
+
+The extraction pipeline:
+- Reads PDF documents page by page.
+- Extracts text from non-empty pages.
+- Preserves source filenames and page numbers.
+- Validates file existence and extension.
+
+### Sample Document
+
+Development uses the publicly available U.S. Department
+of Energy sourcebook, "Improving Motor and Drive System
+Performance."
+
+Source:
+https://www.energy.gov/sites/prod/files/2014/04/f15/amo_motors_sourcebook_web.pdf
+
+Place a local copy at:
+
+data/raw/motor_manual.pdf
+
+PDF documents are excluded from Git tracking.

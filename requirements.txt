@@ -1,6 +1,9 @@
 # Backend
 fastapi[standard]
 
+# PDF Processing
+pymupdf
+
 # Testing
 pytest
 httpx
