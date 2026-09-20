@@ -86,13 +86,14 @@ The current test suite verifies the health check endpoint.
 
 - [x] FastAPI backend setup
 - [x] PDF ingestion and text extraction
-- [x] Preserve source and page metadata
-- [ ] Document chunking
-- [ ] Embedding generation and FAISS indexing
+- [x] Source and page metadata preservation
+- [x] Document chunking with configurable overlap
+- [ ] Embedding generation
+- [ ] FAISS vector indexing
+- [ ] Semantic search
 - [ ] RAG question-answering pipeline
-- [ ] Source citation support
+- [ ] Source citations
 - [ ] Retrieval evaluation
-- [ ] Complete automated testing
 - [ ] Docker deployment
 - [ ] CI/CD integration
 
@@ -106,6 +107,45 @@ The extraction pipeline:
 - Extracts text from non-empty pages.
 - Preserves source filenames and page numbers.
 - Validates file existence and extension.
+
+## Document Chunking
+
+The extracted PDF pages are split into smaller, overlapping
+text chunks using a custom Python implementation.
+
+### Configuration
+
+- Chunk size: 120 words
+- Chunk overlap: 25 words
+- Splitting strategy: Page-aware, word-based splitting
+
+### Features
+
+- Configurable chunk size and overlap
+- Preserves source filename and page number
+- Generates a unique chunk ID per page and chunk position
+- Skips empty pages
+- Validates chunking configuration
+
+### Initial Results
+
+Using the motor systems sourcebook:
+
+- Extracted pages: 93
+- Generated chunks: 528
+
+These are initial processing results. Retrieval accuracy will
+be evaluated after implementing semantic search.
+
+### Current Limitations
+
+- Chunking is based on words rather than model tokens.
+- Sentences may be split across chunk boundaries.
+- Complex PDF tables and layouts are not preserved.
+- Chunk IDs currently assume unique source filenames.
+
+Future improvements will be guided by retrieval evaluation.
+
 
 ### Sample Document
 
