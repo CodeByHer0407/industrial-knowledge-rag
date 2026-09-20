@@ -1,6 +1,7 @@
 import faiss
 import numpy as np
-
+import json
+from pathlib import Path
 
 def build_faiss_index(
     embeddings: np.ndarray,
@@ -113,3 +114,99 @@ def search_faiss_index(
         })
 
     return results
+
+def save_faiss_index(
+    index: faiss.IndexFlatIP,
+    chunks: list[dict],
+    directory: str | Path,
+    model_name: str,
+) -> None:
+    """Save the FAISS index and associated metadata."""
+
+    # Validate the relationship between vectors and chunks.
+    if index.ntotal != len(chunks):
+        raise ValueError(
+            "Index and chunk metadata are misaligned."
+        )
+
+    if not model_name.strip():
+        raise ValueError("Model name cannot be empty.")
+
+    # Create the directory if necessary.
+    directory = Path(directory)
+    directory.mkdir(parents=True, exist_ok=True)
+
+    # Save numerical vectors and FAISS index.
+    index_path = directory / "index.faiss"
+    faiss.write_index(index, str(index_path))
+
+    # Prepare metadata.
+    metadata = {
+        "model_name": model_name,
+        "dimension": index.d,
+        "chunks": chunks,
+    }
+
+    # Save metadata as JSON.
+    metadata_path = directory / "metadata.json"
+
+    with metadata_path.open(
+        "w", encoding="utf-8"
+    ) as file:
+        json.dump(metadata, file, indent=2, ensure_ascii=False)
+
+def load_faiss_index(
+    directory: str | Path,
+    expected_model_name: str,
+) -> tuple[faiss.Index, list[dict]]:
+    """Load a trusted local FAISS index and its metadata."""
+
+    directory = Path(directory)
+
+    index_path = directory / "index.faiss"
+    metadata_path = directory / "metadata.json"
+
+    # Verify both files exist.
+    if not index_path.is_file():
+        raise FileNotFoundError(index_path)
+
+    if not metadata_path.is_file():
+        raise FileNotFoundError(metadata_path)
+
+    # Read metadata first.
+    with metadata_path.open(
+        "r", encoding="utf-8"
+    ) as file:
+        metadata = json.load(file)
+
+    if not isinstance(metadata, dict):
+        raise ValueError("Invalid metadata format.")
+
+    # Check embedding model compatibility.
+    if metadata.get("model_name") != expected_model_name:
+        raise ValueError("Embedding model mismatch.")
+
+    dimension = metadata.get("dimension")
+    chunks = metadata.get("chunks")
+
+    if (
+        not isinstance(dimension, int)
+        or isinstance(dimension, bool)
+        or dimension <= 0
+        or not isinstance(chunks, list)
+    ):
+        raise ValueError("Invalid index metadata.")
+
+    # Only deserialize a trusted, locally generated index.
+    index = faiss.read_index(str(index_path))
+
+    # Verify consistency.
+    if index.d != dimension:
+        raise ValueError("Index dimension mismatch.")
+
+    if index.ntotal != len(chunks):
+        raise ValueError(
+            "Index and chunk metadata are misaligned."
+        )
+
+    return index, chunks
