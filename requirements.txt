@@ -11,6 +11,12 @@ numpy
 # Vector Search
 faiss-cpu
 
+# Local LLM
+ollama
+
+# Optional Cloud LLM
+openai
+
 # Testing
 pytest
 httpx
