@@ -12,11 +12,13 @@ LLM-based answer generation, retrieval evaluation, and deployment are under deve
 
 🚧 **Under Active Development**
 
-**Current milestone:** Semantic retrieval and persistent FAISS index storage implemented and tested.
+**Current milestone:** Initial retrieval evaluation and document preprocessing completed.
 
-**Next milestone:** Retrieval evaluation.
+**Next milestone:** LLM-based answer generation.
 
-The project is being developed incrementally, with each component implemented, tested, and documented before introducing additional functionality.
+The project currently supports PDF ingestion, document chunking,
+targeted header filtering, semantic retrieval, persistent FAISS storage,
+and retrieval evaluation.
 
 ---
 
@@ -64,18 +66,25 @@ The current implementation focuses on document processing and semantic retrieval
 - Reusable scripts for index generation and semantic search.
 - Search without regenerating document embeddings.
 
+### Retrieval Evaluation and Preprocessing
+
+- Evaluation dataset containing 10 technical questions.
+- Hit Rate@5, Labeled Recall@5, and MRR@5 calculations.
+- Retrieval error analysis.
+- Targeted filtering of standalone page-header chunks.
+- Before-and-after retrieval evaluation.
+
 ### Backend and Testing
 
 - FastAPI backend foundation.
 - Health check endpoint.
 - Automated tests using Pytest.
-- 18 passing tests covering the implemented components.
+- 29 passing tests covering the implemented components.
 
 ---
 
 ## 4. Planned Features
 
-- Retrieval evaluation using a manually labeled question dataset.
 - LLM-based question answering.
 - Source-grounded answer generation.
 - Hybrid retrieval using keyword and vector search.
@@ -255,10 +264,11 @@ This script performs the following operations:
 
 1. Extracts text from the PDF.
 2. Generates overlapping document chunks.
-3. Loads the embedding model.
-4. Generates document embeddings.
-5. Builds the FAISS index.
-6. Saves the index and metadata to disk.
+3. Removes standalone page-header chunks.
+4. Loads the embedding model.
+5. Generates document embeddings.
+6. Builds the FAISS index.
+7. Saves the index and metadata.
 
 The first execution may download the embedding model from Hugging Face.
 
@@ -419,6 +429,8 @@ Using the motor systems sourcebook:
 |--------|--------|
 | Extracted pages | 93 |
 | Generated chunks | 528 |
+| Header-only chunks removed | 4 |
+| Final indexed chunks | 524 |
 
 ### Current Limitations
 
@@ -609,9 +621,59 @@ Metadata validation checks consistency but does not authenticate an index file o
 
 ---
 
+## Retrieval Evaluation
+
+The retriever was evaluated using a small development dataset
+containing 10 technical questions and manually identified
+supporting document chunks.
+
+### Evaluation Metrics
+
+- Hit Rate@5
+- Labeled Recall@5
+- Mean Reciprocal Rank (MRR@5)
+
+### Preprocessing Experiment
+
+An audit of the original 528 document chunks identified four
+standalone page-header chunks containing no substantive
+technical information.
+
+A targeted preprocessing function was implemented to remove
+these chunks before embedding generation.
+
+| Metric | Original Index | Filtered Index |
+|--------|----------------|----------------|
+| Indexed chunks | 528 | 524 |
+| Hit Rate@5 | 1.000 | 1.000 |
+| Labeled Recall@5 | 0.850 | 0.850 |
+| MRR@5 | 0.750 | 0.775 |
+
+For one evaluation question (Q003), the first known relevant
+passage moved from rank 4 to rank 2 after filtering.
+
+The same 10 questions and updated relevance labels were used
+for both index configurations.
+
+### Run Evaluation
+
+```powershell
+python -m scripts.evaluate_retrieval
+```
+
+### Limitations
+
+These results are diagnostic development-set measurements,
+not estimates of general retrieval accuracy.
+
+The evaluation dataset is small, some questions were derived
+from previously inspected passages, and relevance labels
+are not exhaustive.
+
+Broader independent evaluation is planned.
 ## 13. Testing
 
-The project currently includes 18 passing automated tests.
+The project currently includes 29 passing automated tests.
 
 Run:
 
@@ -636,7 +698,7 @@ This avoids requiring the full industrial PDF or downloading the embedding model
 ### Latest Reported Test Result
 
 ```text
-18 passed
+29 passed
 ```
 
 ---
@@ -656,13 +718,14 @@ This avoids requiring the full industrial PDF or downloading the embedding model
 - [x] Initial automated tests
 - [x] Persistent FAISS index storage
 - [x] Reusable indexing and search scripts
+- [x] Create an initial retrieval evaluation dataset
+- [x] Implement Hit Rate@K, Labeled Recall@K, and MRR@K
+- [x] Conduct initial retrieval error analysis
+- [x] Implement targeted document preprocessing
+- [x] Compare retrieval results before and after preprocessing
 
 ### In Progress / Upcoming
 
-- [ ] Create a retrieval evaluation dataset
-- [ ] Implement Recall@K, Hit Rate@K, and MRR
-- [ ] Analyze retrieval failures
-- [ ] Improve document preprocessing
 - [ ] Implement LLM-based question answering
 - [ ] Add source-grounded answer generation
 - [ ] Implement hybrid retrieval
@@ -681,7 +744,7 @@ The current implementation has the following limitations:
 - Processes one configured sample document through the current indexing script.
 - Uses word-based chunking rather than token-aware splitting.
 - May lose formatting information during PDF extraction.
-- Does not yet provide formal retrieval evaluation metrics.
+- Retrieval evaluation is currently limited to a small development dataset with incomplete relevance labels; broader independent evaluation is pending.
 - Does not yet generate answers using an LLM.
 - Semantic search is currently accessible through a CLI script rather than an API endpoint.
 - Requires rebuilding the index when the underlying documents or indexing configuration change.

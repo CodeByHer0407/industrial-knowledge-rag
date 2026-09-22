@@ -1,0 +1,85 @@
+[
+  {
+    "question_id": "Q001",
+    "question": "How does increasing motor operating speed affect energy consumption?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p29_c2"
+    ],
+    "category": "operating_speed"
+  },
+  {
+    "question_id": "Q002",
+    "question": "How does motor load affect efficiency at different operating loads?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p43_c1"
+    ],
+    "category": "motor_efficiency"
+  },
+  {
+    "question_id": "Q003",
+    "question": "What motor system conditions create opportunities for performance improvement?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p29_c2",
+      "motor_manual.pdf_p29_c3"
+    ],
+    "category": "system_performance"
+  },
+  {
+    "question_id": "Q004",
+    "question": "How are series DC motors connected, and how does torque change with current?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p16_c1"
+    ],
+    "category": "motor_types"
+  },
+  {
+    "question_id": "Q005",
+    "question": "What happens when a motor's load exceeds its breakdown torque?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p22_c0",
+      "motor_manual.pdf_p22_c1"
+    ],
+    "category": "motor_torque"
+  },
+  {
+    "question_id": "Q006",
+    "question": "What is the purpose of establishing a formal motor management program?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p34_c1"
+    ],
+    "category": "motor_management"
+  },
+  {
+    "question_id": "Q007",
+    "question": "What are the common causes of motor and pump alignment problems?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p40_c0"
+    ],
+    "category": "maintenance"
+  },
+  {
+    "question_id": "Q008",
+    "question": "How can long motor feeder cables cause voltage overshoot at motor terminals?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p50_c1"
+    ],
+    "category": "vfd"
+  },
+  {
+    "question_id": "Q009",
+    "question": "How is simple payback calculated, and what important financial factor does it ignore?",
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p58_c1"
+    ],
+    "category": "economics"
+  },
+  {
+    "question_id": "Q010",
+    "question": "According to the sourcebook, how does the DOE Advanced Manufacturing Office assist industry with energy efficiency?",
+    "relevant_chunk_ids": [
+    "motor_manual.pdf_p63_c1",
+    "motor_manual.pdf_p63_c2"
+    ],
+    "category": "energy_resources"
+    }
+]

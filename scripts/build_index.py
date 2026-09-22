@@ -1,4 +1,5 @@
 from pathlib import Path
+from app.preprocessing import filter_header_only_chunks
 
 from app.ingestion import extract_pdf_pages
 from app.chunking import chunk_documents
@@ -33,7 +34,20 @@ def main():
 
     chunks = chunk_documents(pages)
 
-    print(f"Generated chunks: {len(chunks)}")
+    print(f"Generated chunks before filtering: {len(chunks)}")
+
+    # Remove standalone document headers.
+    original_count = len(chunks)
+
+    chunks = filter_header_only_chunks(chunks)
+
+    removed_count = original_count - len(chunks)
+
+    print(f"Header-only chunks removed: {removed_count}")
+    print(f"Chunks after filtering: {len(chunks)}")
+
+    if not chunks:
+        raise ValueError("No usable chunks remain after preprocessing.")
 
     print("Step 3: Loading embedding model...")
 
@@ -48,8 +62,8 @@ def main():
     print("Step 5: Building FAISS index...")
 
     index, metadata = build_faiss_index(
-        embeddings,
-        chunks,
+            embeddings,
+            chunks,
     )
 
     print(f"Indexed vectors: {index.ntotal}")
