@@ -1,0 +1,192 @@
+{
+  "dataset": "dev",
+  "created_at_utc": "2026-09-26T14:07:57.780807+00:00",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "generation_model": "llama3.2:3b",
+  "top_k": 5,
+  "index_vectors": 524,
+  "question_count": 3,
+  "results": [
+    {
+      "question_id": "Q012",
+      "question": "What voltage conditions can cause motor operating problems, and how much variation from rated voltage significantly affects performance?",
+      "answerable": true,
+      "reference_answer": "A mismatch with supply voltage or distribution-system problems such as three-phase voltage unbalance, outages, sags, surges, overvoltage and undervoltage can cause problems. Motor performance is significantly affected by voltage variations of plus or minus 10 percent or more from rated voltage.",
+      "expected_pages": [
+        19
+      ],
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p19_c1"
+      ],
+      "generated_answer": "[motor_manual.pdf, p. 19]\n\nMotor performance is significantly affected when a motor operates at voltages +/–10% or more from its rated voltage.",
+      "answer_status": "answered",
+      "citation_validation": {
+        "has_citations": true,
+        "valid_citations": [
+          "[motor_manual.pdf, p. 19]"
+        ],
+        "invalid_citations": [],
+        "is_valid": true
+      },
+      "retrieved_sources": [
+        {
+          "rank": 1,
+          "chunk_id": "motor_manual.pdf_p19_c1",
+          "source": "motor_manual.pdf",
+          "page": 19,
+          "score": 0.7701022028923035,
+          "text": "the Right Motor” in Section 2 of this sourcebook. Voltages The motor voltage must match the rated system supply voltage. A mismatch between the motor voltage and the system voltage can result in severe operating problems and, in some cases, immediate failure. However, this type of problem is not common. Operating a motor when the system voltage varies significantly from its rated level is a more critical concern. And problems like these are often the result of a distribution system problem such as three- phase voltage unbalance, voltage outages, sags, surges, and overvoltage or undervoltage. Motor performance is significantly affected when a motor operates at voltages +/–10% or more from its rated volt­ age. See “Efficiency Opportunity No. 6: Addressing"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "motor_manual.pdf_p19_c2",
+          "source": "motor_manual.pdf",
+          "page": 19,
+          "score": 0.6854382753372192,
+          "text": "Motor performance is significantly affected when a motor operates at voltages +/–10% or more from its rated volt­ age. See “Efficiency Opportunity No. 6: Addressing In- Plant Electrical Distribution and Power Quality Issues” in Section 2 of this sourcebook. A facility that experiences wide swings in voltage will probably have an abundance of power quality problems, including poor motor opera­ tion. If that is the case, the facility’s distribution system should be reviewed. For additional information on trouble­ shooting and tuning your in-plant distribution system, see “The Plant Electrical Distribution System” chapter in the AMO’s Premium Efficiency Motor Selection and Applica­ tion Guide.2 2 www1.eere.energy.gov/manufacturing/tech_assistance/motors.html Horsepower The horsepower rating of a motor indicates its brake or shaft horsepower output. A"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "motor_manual.pdf_p45_c3",
+          "source": "motor_manual.pdf",
+          "page": 45,
+          "score": 0.666136622428894,
+          "text": "by the activation of these undervoltage relays. Motors are also subject to transient voltage events, such as surges and sags. These events can be triggered by utility switching or in-plant activities such as the energization of large loads. Line voltage that is higher than a motor’s rating can also affect the motor’s life and performance. Depending on the design of the motor, overvoltage conditions can cause magnetic saturation of the iron core that can lead to over­ heating of the motor. However, for voltages up to 110% of the motor’s rating, the full-load efficiency of the motor might actually increase up to 1% as a result of the lower current required. Also, at 110% of a motor’s rated voltage, startup"
+        },
+        {
+          "rank": 4,
+          "chunk_id": "motor_manual.pdf_p45_c0",
+          "source": "motor_manual.pdf",
+          "page": 45,
+          "score": 0.6600348949432373,
+          "text": "PERFORMANCE OPPORTUNITY ROAD MAP IMPROVING MOTOR AND DRIVE SYSTEM PERFORMANCE: A SOURCEBOOK FOR INDUSTRY | 35 Major Specification Characteristics It is important to determine the voltage and enclosure needed when specifying an industrial motor. The voltage is usually determined by the power available in the plant’s distribution system. The enclosure type is usually deter­ mined by environmental conditions such as air quality, exposure to moisture, any harmful vapors present, and so on. Voltage. The voltage rating of a motor should match the power supply. Common motor voltages are 115, 200, 230, 460, 575, 2,300, and 4,000 V. Motors rated for 600 V and below are called “low-voltage” motors, while the 2,300 and 4,000 V motors are deemed “medium-voltage” motors. Motors"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "motor_manual.pdf_p19_c0",
+          "source": "motor_manual.pdf",
+          "page": 19,
+          "score": 0.6538509130477905,
+          "text": "MOTOR AND DRIVE SYSTEM BASICS IMPROVING MOTOR AND DRIVE SYSTEM PERFORMANCE: A SOURCEBOOK FOR INDUSTRY | 9 Motor Operating Characteristics The most important motor operating characteristics are horsepower, operating speed (measured in RPM), and torque. These are related by the following equation: Motor performance depends on how well these operating characteristics match the load. The load on a motor is not always constant, and the response of the motor to changes in load is a fundamental factor in selecting the right motor for an application. For more on this, see “Efficiency Opportunity No. 4: Selecting the Right Motor” in Section 2 of this sourcebook. Voltages The motor voltage must match the rated system supply voltage. A mismatch between the motor"
+        }
+      ]
+    },
+    {
+      "question_id": "Q013",
+      "question": "How does reducing pump speed with a VFD affect flow and power requirements, and what pump-head condition can limit VFD suitability?",
+      "answerable": true,
+      "reference_answer": "VFDs adjust pump speed to match the system's needs. Reducing speed proportionally reduces flow while reducing power requirements exponentially. They may be unsuitable for pumps operating against high static or elevation head.",
+      "expected_pages": [
+        25
+      ],
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p25_c1"
+      ],
+      "generated_answer": "Reducing pump speed with a VFD can reduce the flow and power requirements of a pump. According to [motor_manual.pdf, p. 23], when the pump's speed is reduced, it operates at a new operating point, such as Point B, which provides the same desired flow rate but with reduced pressure and power requirements. This is because the power to the pump-drive motor is proportional to the product of the flow and head at the operating point.",
+      "answer_status": "answered",
+      "citation_validation": {
+        "has_citations": true,
+        "valid_citations": [
+          "[motor_manual.pdf, p. 23]"
+        ],
+        "invalid_citations": [],
+        "is_valid": true
+      },
+      "retrieved_sources": [
+        {
+          "rank": 1,
+          "chunk_id": "motor_manual.pdf_p47_c4",
+          "source": "motor_manual.pdf",
+          "page": 47,
+          "score": 0.6767372488975525,
+          "text": "But, even if the motor must be changed, other system components can be left intact, which makes this upgrade relatively nondisruptive. VFDs can provide substantial flow-control improvements and reduce the stress on the entire system. Unlike other flow control measures, such as throttle and bypass valves, which dissipate energy after they are added to the system fluid, VFDs reduce the amount of energy imparted to the system. This reduction also reduces stress on the piping system and support structures. VFDs are not suitable for all fluid system applications, and may not be cost effec­ tive in systems with low annual operating hours, that use other flow control approaches such as eddy current drives, multi-speed motors, multiple pumps working in parallel,"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "motor_manual.pdf_p49_c2",
+          "source": "motor_manual.pdf",
+          "page": 49,
+          "score": 0.675889253616333,
+          "text": "Industry.55 Misapplications VFDs are not recommended for applications in which slowing down the machine speed causes operating problems, such as insufficient torque or poor cooling. In pumping systems that have high-static head characteris­ tics, slowing down the pump speed too much can force the pump to operate in a virtual shut-off head condition. Under these conditions, the pump can experience damaging vibra­ tions and could fail to provide adequate flow to the system. Similarly, in applications in which the torque increases at low speeds, such as certain mixing processes, the power requirements of the motor will not drop significantly at lower speeds. In such cases, the integral motor fan may not provide sufficient cooling at lower speeds. In applica­ tions"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "motor_manual.pdf_p23_c3",
+          "source": "motor_manual.pdf",
+          "page": 23,
+          "score": 0.6647157669067383,
+          "text": "power to the pump-drive motor is proportional to the product of the flow and head at the operating point. Note how the amount of pressure supplied by the pump is dramatically reduced by slowing its rotational speed. Reducing the pump’s speed with an ASD takes the pump to operating Point B. Although operating Point B pro­ vides the same desired flow rate, it does so with reduced pressure and power requirements. At Point B, the pump operates much more efficiently, thus saving energy. There is no longer a large pressure drop across the throttle valve, so maintenance requirements, system noise, and system vibration are reduced. Additional examples of this rela­ tionship are shown in figures 7 and 8."
+        },
+        {
+          "rank": 4,
+          "chunk_id": "motor_manual.pdf_p47_c3",
+          "source": "motor_manual.pdf",
+          "page": 47,
+          "score": 0.6569280624389648,
+          "text": "significant amount of energy, VFDs are well suited for fluid systems. In fan systems and systems served by centrifugal pumps with low static head requirements, there is a cube power relation­ ship between flow and power (see the discussion of affinity laws in Section 1). Because many fluid systems have vary­ ing flow requirements, a VFD can adjust the output of a pump or a fan to meet these requirements automatically. VFDs can often be retrofitted to existing pump and fan motors; however, all existing motors should be evalu­ ated for compatibility with this modification. But, even if the motor must be changed, other system components can be left intact, which makes this upgrade relatively nondisruptive. VFDs can provide substantial"
+        },
+        {
+          "rank": 5,
+          "chunk_id": "motor_manual.pdf_p47_c2",
+          "source": "motor_manual.pdf",
+          "page": 47,
+          "score": 0.6409255266189575,
+          "text": "of applications, including fluid (gas and liquid) systems, material handling systems, and machining and fabrication processes. These drives can be incorporated into closed-loop control systems, and VFD speed adjustment ratios are similar to those of other speed control systems. The principal advantage of VFDs is improved operating efficiency, which means substantial cost savings in many motor systems. If they are used in place of mechanical drive options, VFDs can also improve system reliability by removing potential failure modes and requir­ ing less maintenance because they have fewer components. Fluid Systems. Because they can save a significant amount of energy, VFDs are well suited for fluid systems. In fan systems and systems served by centrifugal pumps with low static head requirements,"
+        }
+      ]
+    },
+    {
+      "question_id": "Q040",
+      "question": "What is the real-time power consumption of the main motor currently installed at my factory?",
+      "answerable": false,
+      "reference_answer": null,
+      "expected_pages": [],
+      "relevant_chunk_ids": [],
+      "generated_answer": "The available documentation does not provide enough information to answer this question.",
+      "answer_status": "abstained",
+      "citation_validation": null,
+      "retrieved_sources": [
+        {
+          "rank": 1,
+          "chunk_id": "motor_manual.pdf_p61_c0",
+          "source": "motor_manual.pdf",
+          "page": 61,
+          "score": 0.6307353377342224,
+          "text": "IMPROVING MOTOR AND DRIVE SYSTEM PERFORMANCE: A SOURCEBOOK FOR INDUSTRY | 51 Wattmeters require two simultaneous inputs—voltage and current; many motor installations do not provide conve­ nient access to both. To calculate electricity consumption, the measured kW value is multiplied by hours of opera­ tion and electricity costs, as shown in Case I in the “Direct Measurement” sidebar. This calculation is for a motor with a constant load, that is, one that does not vary over time. If a wattmeter is not available or if it is not practical to use one, then current and voltage can be measured sepa­ rately. Note that the average current and voltage should be determined from readings taken on each phase. If there is"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "motor_manual.pdf_p60_c5",
+          "source": "motor_manual.pdf",
+          "page": 60,
+          "score": 0.5705661177635193,
+          "text": "complete a motor survey and assume the motor operates at the full-load efficiency displayed on the motor nameplate. Motors without such an efficiency value are almost certainly old, standard efficiency motors. Addi­ tional necessary data includes annual hours of operation (hours per year), unit cost of electricity ($/kWh), and aver­ age load factor, which refers to the average percentage of full-load electric power at which the motor operates. Motor system economic analyses are driven largely by the amount of time and the percentage of its full capac­ ity at which the motor system operates. To account for the fact that a motor usually does not operate at its rated full load all the time, its average load factor can be"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "motor_manual.pdf_p36_c1",
+          "source": "motor_manual.pdf",
+          "page": 36,
+          "score": 0.5638397932052612,
+          "text": "electric motor inventory, keeping a historical record of motor maintenance actions, and calculating the life cycle costs for potential motor efficiency improvement projects. MotorMaster+ helps users to find the most energy-efficient motors that meet the requirements of the application and to compare the life cycle costs of potential replacements with the cost of a typical repair. The electric motor database includes all NEMA and some International Electrotechnical Commission (IEC) metric motor models from 1 to 4,000 hp that operate at speeds of 900, 1,200, 1,800, and 3,600 RPM at ratings up to 6,600 volts (V). To ensure consistency among various manufac­ turers, electric motor efficiency data are taken in accor­ dance with industry standards for measuring full- and part-load efficiencies."
+        },
+        {
+          "rank": 4,
+          "chunk_id": "motor_manual.pdf_p60_c6",
+          "source": "motor_manual.pdf",
+          "page": 60,
+          "score": 0.559249222278595,
+          "text": "account for the fact that a motor usually does not operate at its rated full load all the time, its average load factor can be estimated. Annual electricity costs can be calculated by inserting this information into the simple calculation methodology shown in the “Simple Calculation” Direct Measurement Method. A more accurate way to determine electricity consumption is to take electrical measurements. The direct measurement method requires reading power [kilowatt (kW)] with a wattmeter or read­ ing amps (A) and volts (V) and calculating kW using the nameplate power factor."
+        },
+        {
+          "rank": 5,
+          "chunk_id": "motor_manual.pdf_p5_c2",
+          "source": "motor_manual.pdf",
+          "page": 5,
+          "score": 0.5505139827728271,
+          "text": ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7 Figure 4. Typical motor part-load efficiency curve . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ."
+        }
+      ]
+    }
+  ]
+}

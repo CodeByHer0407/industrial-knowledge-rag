@@ -233,6 +233,37 @@ retrieval scores are reported at this stage.
 The development and test datasets use the same source document.
 The test set measures performance on held-out questions, not
 generalization to unseen documents.
+
+### Answer-Level Evaluation — Development Set
+
+Evaluated local Llama 3.2 3B responses on 42 development questions
+using top-5 FAISS retrieval from a 524-chunk index.
+
+| Metric | Result |
+| --- | ---: |
+| Answerable questions | 35 |
+| Unanswerable questions | 7 |
+| Complete answers | 16/35 (45.71%) |
+| Partial answers | 17/35 |
+| Incorrect abstentions | 2/35 |
+| Correct abstentions | 7/7 (100%) |
+| Valid citation references | 27/33 (81.82%) |
+
+Manual review identified 32 answers with supported claims and one
+with partially supported claims, among the 33 generated answers.
+
+Key observed failure categories:
+- Incomplete answers despite relevant retrieved evidence.
+- Incorrect abstention when sufficient evidence was retrieved.
+- Retrieval of an incomplete table passage.
+- Missing, incorrectly formatted or invalid citation references.
+
+These figures describe one development-set run using proposed manual
+review labels. They are not held-out benchmark results.
+
+The 18-question held-out test set remains reserved until retrieval
+and generation settings have been finalized.
+
 ## Automated tests
 
 ```powershell

@@ -12,7 +12,7 @@
     "relevant_chunk_ids": [
       "motor_manual.pdf_p29_c2"
     ],
-    "reference_answer": null
+    "reference_answer": "Increasing motor operating speed can increase the load imposed by rotating equipment and therefore increase energy consumption. In the sourcebook's example, increasing speed from 1,760 to 1,770 RPM can increase the load by up to 1.6%, while a 20-RPM increase can raise both load and energy consumption by 3.3%. These are illustrative figures, not universal values for every motor-driven system."
   },
   {
     "question_id": "Q002",
@@ -27,7 +27,7 @@
     "relevant_chunk_ids": [
       "motor_manual.pdf_p43_c1"
     ],
-    "reference_answer": null
+    "reference_answer": "For many EPAct Design A and B motors, efficiency is relatively constant around 70% to 80% of rated load and may drop slightly at full load. Efficiency may begin to decline below 50% of rated load and declines dramatically below 40%. Slight oversizing may improve efficiency, but substantial oversizing can reduce it."
   },
   {
     "question_id": "Q003",
@@ -43,7 +43,7 @@
       "motor_manual.pdf_p29_c2",
       "motor_manual.pdf_p29_c3"
     ],
-    "reference_answer": null
+    "reference_answer": "Performance-improvement opportunities often arise from motors that are poorly sized, improperly configured, or inadequately maintained. In industrial facilities, much of the motor-system energy consumption may be concentrated in a few large motors that operate for long periods. These energy-intensive systems are important candidates for improvements, even when production-related downtime makes modifications difficult."
   },
   {
     "question_id": "Q004",
@@ -58,7 +58,7 @@
     "relevant_chunk_ids": [
       "motor_manual.pdf_p16_c1"
     ],
-    "reference_answer": null
+    "reference_answer": "In a series DC motor, the field and armature are connected in series, so the same current passes through both. Before magnetic saturation, torque increases in proportion to the square of current. Beyond saturation, increases in load are directly proportional to increases in current."
   },
   {
     "question_id": "Q005",
@@ -74,7 +74,7 @@
       "motor_manual.pdf_p22_c0",
       "motor_manual.pdf_p22_c1"
     ],
-    "reference_answer": null
+    "reference_answer": "Breakdown torque is the maximum torque a motor can produce without an abrupt drop in speed. If the load exceeds breakdown torque, the motor stalls and can overheat rapidly, potentially causing insulation failure if it is not properly protected."
   },
   {
     "question_id": "Q006",
@@ -89,7 +89,7 @@
     "relevant_chunk_ids": [
       "motor_manual.pdf_p34_c1"
     ],
-    "reference_answer": null
+    "reference_answer": "A formal motor management program supports proactive, cost-effective management of motor systems instead of treating them as overlooked assets. It can establish motor repair-versus-replacement and purchasing policies, maintain a motor inventory, track motor life, create a spare-motor inventory, and schedule required maintenance."
   },
   {
     "question_id": "Q007",
@@ -104,7 +104,7 @@
     "relevant_chunk_ids": [
       "motor_manual.pdf_p40_c0"
     ],
-    "reference_answer": null
+    "reference_answer": "Motor and pump alignment problems can result from poor installation, foundation movement, or bearing system wear. During installation, force-fitting piping that does not align with pump flanges can pull the motor-pump shafts out of alignment. Welding can also distort foundations and affect machinery alignment."
   },
   {
     "question_id": "Q008",
@@ -119,7 +119,7 @@
     "relevant_chunk_ids": [
       "motor_manual.pdf_p50_c1"
     ],
-    "reference_answer": null
+    "reference_answer": "A long motor feeder cable can introduce enough inductance to create resonance in the drive-cable-motor circuit. Reflected voltage waves can then produce voltage overshoot at the motor terminals, potentially exceeding twice the normal voltage. A large part of the overshoot can appear across the first turn of the stator winding, stressing its turn-to-turn insulation and causing electrical discharge."
   },
   {
     "question_id": "Q009",
@@ -134,7 +134,7 @@
     "relevant_chunk_ids": [
       "motor_manual.pdf_p58_c1"
     ],
-    "reference_answer": null
+    "reference_answer": "When a project produces a consistent annual benefit, simple payback is calculated by dividing the initial investment by the annual benefit. It ignores the time value of money, treating money received today and money received in the future as equivalent."
   },
   {
     "question_id": "Q010",
@@ -151,7 +151,7 @@
       "motor_manual.pdf_p63_c1",
       "motor_manual.pdf_p63_c2"
     ],
-    "reference_answer": null
+    "reference_answer": "According to the sourcebook, the DOE Advanced Manufacturing Office assists industry through partnerships that develop energy-efficient technologies and processes, technical assistance for assessing energy intensity and identifying efficiency opportunities, and training and information resources. Its activities address energy and cost savings, waste reduction, pollution prevention, and improved environmental performance. The sourcebook also identifies no-cost energy assessments available to qualifying small and medium-sized manufacturers through Industrial Assessment Centers."
   },
   {
     "question_id": "Q011",
