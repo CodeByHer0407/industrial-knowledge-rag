@@ -1,0 +1,259 @@
+[
+  {
+    "question_id": "Q001",
+    "question": "How does increasing motor operating speed affect energy consumption?",
+    "category": "operating_speed",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      29
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p29_c2"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q002",
+    "question": "How does motor load affect efficiency at different operating loads?",
+    "category": "motor_efficiency",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      43
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p43_c1"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q003",
+    "question": "What motor system conditions create opportunities for performance improvement?",
+    "category": "system_performance",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      29
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p29_c2",
+      "motor_manual.pdf_p29_c3"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q004",
+    "question": "How are series DC motors connected, and how does torque change with current?",
+    "category": "motor_types",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      16
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p16_c1"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q005",
+    "question": "What happens when a motor's load exceeds its breakdown torque?",
+    "category": "motor_torque",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      22
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p22_c0",
+      "motor_manual.pdf_p22_c1"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q006",
+    "question": "What is the purpose of establishing a formal motor management program?",
+    "category": "motor_management",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      34
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p34_c1"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q007",
+    "question": "What are the common causes of motor and pump alignment problems?",
+    "category": "maintenance",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      40
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p40_c0"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q008",
+    "question": "How can long motor feeder cables cause voltage overshoot at motor terminals?",
+    "category": "vfd",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      50
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p50_c1"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q009",
+    "question": "How is simple payback calculated, and what important financial factor does it ignore?",
+    "category": "economics",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      58
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p58_c1"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q010",
+    "question": "According to the sourcebook, how does the DOE Advanced Manufacturing Office assist industry with energy efficiency?",
+    "category": "energy_resources",
+    "question_type": null,
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      63
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p63_c0",
+      "motor_manual.pdf_p63_c1",
+      "motor_manual.pdf_p63_c2"
+    ],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q011",
+    "question": "Who should take the industrial electrical measurements discussed in the sourcebook?",
+    "category": "safety",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      12
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p12_c0"
+    ],
+    "reference_answer": "Only qualified electricians trained in safety practices for industrial electrical systems should take the measurements. Unqualified or untrained personnel should not attempt them."
+  },
+  {
+    "question_id": "Q012",
+    "question": "What voltage conditions can cause motor operating problems, and how much variation from rated voltage significantly affects performance?",
+    "category": "motor_voltage",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      19
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p19_c1"
+    ],
+    "reference_answer": "A mismatch with supply voltage or distribution-system problems such as three-phase voltage unbalance, outages, sags, surges, overvoltage and undervoltage can cause problems. Motor performance is significantly affected by voltage variations of plus or minus 10 percent or more from rated voltage."
+  },
+  {
+    "question_id": "Q013",
+    "question": "How does reducing pump speed with a VFD affect flow and power requirements, and what pump-head condition can limit VFD suitability?",
+    "category": "pumping_systems",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      25
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p25_c1"
+    ],
+    "reference_answer": "VFDs adjust pump speed to match the system's needs. Reducing speed proportionally reduces flow while reducing power requirements exponentially. They may be unsuitable for pumps operating against high static or elevation head."
+  },
+  {
+    "question_id": "Q014",
+    "question": "Which industrial systems tend to be major consumers of motor energy, and how should individual plants identify their most energy-intensive motor systems?",
+    "category": "energy_assessment",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      32
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p32_c0",
+      "motor_manual.pdf_p32_c1"
+    ],
+    "reference_answer": "Industries frequently using pumps, fans, material handling systems and air compressors tend to have large motor-system energy consumption. Individual plants should review their own processes because motor requirements vary between facilities, even within the same industry."
+  },
+  {
+    "question_id": "Q015",
+    "question": "Which financial outputs does MotorMaster+ provide in its life-cycle cost analysis?",
+    "category": "financial_analysis",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      37
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p37_c0"
+    ],
+    "reference_answer": "MotorMaster+ provides rate of return on investment, levelized cost of energy savings, net present value and benefit-to-cost ratio."
+  },
+  {
+    "question_id": "Q016",
+    "question": "What additional capabilities does MotorMaster International provide compared with MotorMaster+?",
+    "category": "software_tools",
+    "question_type": "comparison",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      37, 65
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p37_c1",
+      "motor_manual.pdf_p65_c0"
+    ],
+    "reference_answer": "MotorMaster International supports repair and replacement analysis for a broader range of motors, multiple currencies, regional number formats, efficiency-benefit calculations with kW- and kVA-based demand charges, and identification of best-available replacement motors."
+  },
+  {
+    "question_id": "Q017",
+    "question": "What is the Wi-Fi password for the industrial facility described in the manual?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  }
+]

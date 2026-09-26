@@ -13,7 +13,8 @@ A local-first Retrieval-Augmented Generation (RAG) application for asking natura
 - **Document-grounded generation:** Build an evidence-only prompt and use `llama3.2:3b` through local Ollama. A separate OpenAI client is implemented but **not required** for local use.
 - **Traceability:** Return retrieved passages, scores, source filenames, page numbers, and bracketed source citations.
 - **Citation-reference checks:** Detect citations to source/page pairs that were not retrieved and flag missing or malformed bracketed citations. Explicit insufficient-evidence responses are marked as abstentions.
-- **Interfaces and tests:** CLI, FastAPI `/health` and `/ask` endpoints, retrieval evaluation, and automated pytest tests.
+- **Interfaces and tests:** CLI, FastAPI `/health` and `/ask` endpoints, legacy and expanded development-set retrieval evaluation, and automated pytest tests.
+- **Evaluation dataset checks:** Validate question schema and relevance labels; distinguish answerable from unanswerable questions; require an explicit confirmation flag before running an eventual untouched final-test set.
 
 ## Architecture
 
@@ -127,11 +128,20 @@ The response contains `question`, `answer`, `sources`, `answer_status` (`answere
 
 ## Evaluation
 
-The repository includes `eval/questions.json` and `scripts/evaluate_retrieval.py`, with a small development set of **10 technical questions** and manually identified supporting chunk IDs.
+The evaluation workflow retains the original 10-question baseline in `eval/questions.json` and maintains an expanded, manually curated development dataset in `eval/dev_questions.json`. The dataset loader in `app/eval_dataset.py` validates required fields, unique IDs, source/page labels, and answerability rules. `scripts/evaluate_retrieval.py` supports `--dataset legacy`, `--dataset dev` (the default), and `--dataset test`. Final-test evaluation requires `--confirm-final` and should be run only after the retrieval configuration is frozen; the final-test dataset is **not yet prepared**.
 
 ```powershell
-python -m scripts.evaluate_retrieval
+# Reproduce the original 10-question baseline:
+python -m scripts.evaluate_retrieval --dataset legacy
+
+# Evaluate the expanded development set:
+python -m scripts.evaluate_retrieval --dataset dev
+
+# Run the automated test suite:
+python -m pytest -q
 ```
+
+### Historical 10-question baseline
 
 | Retrieval metric | Original index (528 chunks) | Filtered index (524 chunks) |
 | --- | ---: | ---: |
@@ -139,7 +149,21 @@ python -m scripts.evaluate_retrieval
 | Labeled Recall@5 | 0.850 | 0.850 |
 | MRR@5 | 0.750 | 0.775 |
 
-These are development-set diagnostics, **not estimates of general retrieval accuracy**: the set is small, some questions were developed after inspecting passages, and supporting-chunk labels are incomplete.
+### Evaluation v2 — Milestone 1 (September 2026)
+
+The expanded development set contains **17 questions: 16 answerable and 1 intentionally unanswerable**, using the saved 524-chunk index. An initial relevance-label audit added evidence for Q010 and Q016 and reviewed other high-ranking candidate passages. The original legacy baseline is preserved separately.
+
+| Metric | Expanded development set |
+| --- | ---: |
+| Answerable questions scored | 16 |
+| Unanswerable questions excluded from positive retrieval metrics | 1 |
+| Hit Rate@5 | 0.9375 |
+| Labeled Recall@5 | 0.8229 |
+| MRR@5 | 0.7969 |
+
+**Known failure:** Q013, a multipart question about VFD effects on pump flow/power and high static head, did not retrieve its currently labeled passage within the top five. Other top-ranked passages discuss related VFD concepts. This case is retained for later relevance review and retrieval experiments rather than relabeled simply to improve the score.
+
+These are **small, development-set diagnostics—not estimates of general retrieval accuracy**. Questions and relevance labels were developed with reference to the indexed document; relevant passages may remain unlabeled. The unanswerable question is excluded from these positive retrieval metrics; adding an unanswerable question does **not** establish abstention performance. Broader curated coverage, a separate untouched final-test set, and systematic answer-level correctness, citation support, and abstention evaluation are still planned.
 
 Initial manually inspected answer-generation examples are documented in [`eval/answer_evaluation.md`](eval/answer_evaluation.md):
 
@@ -157,16 +181,18 @@ These three examples illustrate behavior; they do not establish an answer-accura
 python -m pytest -q
 ```
 
-**Latest reported local run:** 65 passed, 1 third-party deprecation warning (September 2026). The tests cover document processing, retrieval, persistence, prompt construction, client behavior, citation-reference validation, RAG orchestration, CLI, and API. The automated tests use mocks/synthetic fixtures where appropriate; they do not establish that the LLM's answers are always factual.
+**Latest reported local run:** **71 passed, 1 third-party Starlette/AnyIO deprecation warning (September 26, 2026)**. The tests cover document processing, retrieval, persistence, evaluation dataset validation, final-test confirmation, prompt construction, client behavior, citation-reference validation, RAG orchestration, CLI, and API. The automated tests use mocks/synthetic fixtures where appropriate; they do not establish that the LLM's answers are always factual or grounded.
 
 ## Repository layout
 
 ```text
 app/       PDF ingestion, preprocessing, chunking, embeddings, FAISS,
-           prompting, LLM clients, RAG pipeline, citation checks, API
-scripts/   Index building, retrieval, evaluation, prompt preview, Q&A CLI
-tests/     Automated unit and API tests
-eval/      Retrieval questions and manual answer-evaluation notes
+           dataset validation, prompting, LLM clients, RAG pipeline,
+           citation checks, API
+scripts/   Index building, retrieval, dataset migration and curation,
+           evaluation, prompt preview, Q&A CLI
+tests/     Automated unit, evaluation-schema, and API tests
+eval/      Legacy and development questions, manual answer-evaluation notes
 data/      Local raw PDF and generated FAISS artifacts (ignored by Git)
 ```
 
@@ -174,11 +200,11 @@ data/      Local raw PDF and generated FAISS artifacts (ignored by Git)
 
 - Only one configured, text-based sample PDF is indexed by the current script; scanned PDFs require OCR, which is not implemented.
 - PDF extraction may introduce broken words, lose table structure, or split sentences at fixed-size chunk boundaries.
-- Top-k vector retrieval can return irrelevant passages, including bibliography content. There is no calibrated out-of-domain similarity threshold.
+- Top-k vector retrieval can return irrelevant passages, including bibliography content. The current 17-question development evaluation contains a documented top-5 miss (Q013). There is no calibrated out-of-domain similarity threshold.
 - The LLM can overgeneralize, omit citations, or cite valid pages that do not fully support its claims. Citation validation checks *references*, not claim-level faithfulness.
 - Abstention recognition currently relies on one exact response string, so alternate refusal phrasing may not be recognized.
 - FastAPI caches local resources after first use; `/health` is not a dependency-readiness check. The local model requires sufficient system memory and may be slow on some computers.
-- Dependency versions are not yet pinned and GitHub Actions CI, containerization, a frontend, multi-document ingestion, and broader evaluation are future improvements—not current features.
+- Dependency-version pinning/compatibility verification, containerization, a frontend, multi-document ingestion, expanded evaluation, and hybrid retrieval/reranking remain future work. A GitHub Actions CI workflow has been used previously; each new milestone still needs its own remote CI run after pushing.
 
 ## Data and privacy
 
@@ -186,4 +212,4 @@ The sample sourcebook is attributed above and is not committed to this repositor
 
 ## Project status
 
-**Working prototype:** PDF → embeddings → FAISS retrieval → local LLM → citation report, available through CLI and FastAPI. The next release tasks are reproducible setup verification, dependency pinning/compatibility testing, GitHub Actions CI, and a short demo.
+**Working prototype + Evaluation v2 Milestone 1:** PDF → embeddings → FAISS retrieval → local LLM → citation report, available through CLI and FastAPI. Development evaluation now includes validated schema, 17 curated questions (16 answerable), audited evidence labels, legacy-baseline preservation, and 71 passing automated tests. Next: expand and verify question coverage, prepare an untouched final-test set, evaluate generated answers and abstentions, then experiment with hybrid retrieval/reranking.
