@@ -165,6 +165,42 @@ The expanded development set contains **17 questions: 16 answerable and 1 intent
 
 These are **small, development-set diagnostics—not estimates of general retrieval accuracy**. Questions and relevance labels were developed with reference to the indexed document; relevant passages may remain unlabeled. The unanswerable question is excluded from these positive retrieval metrics; adding an unanswerable question does **not** establish abstention performance. Broader curated coverage, a separate untouched final-test set, and systematic answer-level correctness, citation support, and abstention evaluation are still planned.
 
+### Evaluation v2 — Milestone 2: Expanded Development Benchmark (September 2026)
+
+The development dataset has been expanded to **42 manually curated questions:
+35 answerable and 7 intentionally unanswerable**, covering motor
+characteristics, pumping and fan systems, electrical safety, motor
+maintenance, power quality, economics, and diagnostic methods.
+
+The current evaluation uses the saved FAISS index containing **524 chunks**.
+Positive retrieval metrics are calculated using the 35 answerable
+questions. Unanswerable questions are reserved for answer-level
+abstention evaluation.
+
+| Retrieval metric | 42-question development set |
+| --- | ---: |
+| Answerable questions scored | 35 |
+| Unanswerable questions excluded | 7 |
+| Hit Rate@5 | 0.9429 |
+| Labeled Recall@5 | 0.8619 |
+| MRR@5 | 0.8081 |
+
+**Known retrieval limitations:**
+
+- **Q013:** The labeled VFD passage is missing from the top five, although
+  multiple retrieved passages collectively provide relevant evidence.
+- **Q024:** The annual maintenance activities occur in a chunk that is
+  not retrieved. An earlier portion of the same inspection table is
+  returned instead, illustrating a chunk-boundary limitation.
+
+These are development-set diagnostics, not estimates of general
+retrieval accuracy. The dataset was curated using the indexed source,
+and relevance labels may remain incomplete.
+
+The next evaluation milestone is an independent, held-out
+18-question test set. It will remain unused during retrieval tuning
+and will be evaluated after the retrieval configuration is frozen.
+
 Initial manually inspected answer-generation examples are documented in [`eval/answer_evaluation.md`](eval/answer_evaluation.md):
 
 | Example | Observation |
@@ -200,7 +236,12 @@ data/      Local raw PDF and generated FAISS artifacts (ignored by Git)
 
 - Only one configured, text-based sample PDF is indexed by the current script; scanned PDFs require OCR, which is not implemented.
 - PDF extraction may introduce broken words, lose table structure, or split sentences at fixed-size chunk boundaries.
-- Top-k vector retrieval can return irrelevant passages, including bibliography content. The current 17-question development evaluation contains a documented top-5 miss (Q013). There is no calibrated out-of-domain similarity threshold.
+- Top-k vector retrieval can return irrelevant passages, including
+  bibliography content. On the current 42-question development set,
+  two labeled-passage retrieval misses remain: Q013 and Q024.
+  The current evaluation does not fully measure evidence that can be
+  combined across multiple retrieved passages. There is no calibrated
+  out-of-domain similarity threshold.
 - The LLM can overgeneralize, omit citations, or cite valid pages that do not fully support its claims. Citation validation checks *references*, not claim-level faithfulness.
 - Abstention recognition currently relies on one exact response string, so alternate refusal phrasing may not be recognized.
 - FastAPI caches local resources after first use; `/health` is not a dependency-readiness check. The local model requires sufficient system memory and may be slow on some computers.
@@ -212,4 +253,17 @@ The sample sourcebook is attributed above and is not committed to this repositor
 
 ## Project status
 
-**Working prototype + Evaluation v2 Milestone 1:** PDF → embeddings → FAISS retrieval → local LLM → citation report, available through CLI and FastAPI. Development evaluation now includes validated schema, 17 curated questions (16 answerable), audited evidence labels, legacy-baseline preservation, and 71 passing automated tests. Next: expand and verify question coverage, prepare an untouched final-test set, evaluate generated answers and abstentions, then experiment with hybrid retrieval/reranking.
+**Working prototype + Evaluation v2 Milestone 2 complete:**
+
+PDF ingestion → page-aware chunking → Sentence Transformers embeddings →
+FAISS retrieval → local Ollama answer generation → citation-reference
+validation, accessible through CLI and FastAPI.
+
+The development benchmark now contains 42 curated questions
+(35 answerable, 7 unanswerable). Current retrieval results are
+Hit Rate@5 = 0.9429, Labeled Recall@5 = 0.8619,
+and MRR@5 = 0.8081. The latest automated test run passed all 71 tests.
+
+Next: prepare the untouched 18-question final-test set,
+introduce systematic answer-level evaluation, and experiment with
+hybrid retrieval and reranking before final-test evaluation.

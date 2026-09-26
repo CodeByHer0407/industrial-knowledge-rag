@@ -8,7 +8,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 INDEX_DIR = PROJECT_ROOT / "data" / "index"
 
 # Pages not used as primary evidence by our existing questions.
-PAGES_TO_REVIEW = [12, 19, 25, 32, 37]
+PAGES_TO_REVIEW = [18, 30, 41, 45, 54, 60]
 
 
 def main():

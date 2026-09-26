@@ -237,7 +237,8 @@
     "answerable": true,
     "expected_document": "motor_manual.pdf",
     "expected_pages": [
-      37, 65
+      37,
+      65
     ],
     "relevant_chunk_ids": [
       "motor_manual.pdf_p37_c1",
@@ -248,6 +249,362 @@
   {
     "question_id": "Q017",
     "question": "What is the Wi-Fi password for the industrial facility described in the manual?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q018",
+    "question": "Why can using discharge dampers instead of motor speed control increase the operating cost of variable-flow fan systems?",
+    "category": "fan_systems",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      14
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p14_c0"
+    ],
+    "reference_answer": "Discharge dampers restrict airflow rather than adjusting motor speed. They are among the least efficient flow-control methods, so fan systems can consume more energy and have higher operating costs than necessary."
+  },
+  {
+    "question_id": "Q019",
+    "question": "How do eddy-current and hydraulic couplings control output speed, and what drawbacks do they share?",
+    "category": "speed_control",
+    "question_type": "comparison",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      21
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p21_c1"
+    ],
+    "reference_answer": "Eddy-current couplings adjust magnetic field strength to control slip and rotational speed. Hydraulic couplings allow fluid to recirculate instead of performing mechanical work. Both have relatively low efficiency compared with other speed-control devices and high maintenance costs."
+  },
+  {
+    "question_id": "Q020",
+    "question": "What problems can result from installing a fan that is larger than the system requires?",
+    "category": "fan_systems",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      26
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p26_c0"
+    ],
+    "reference_answer": "Oversized fans can increase operating costs, produce unnecessary noise, and require more maintenance."
+  },
+  {
+    "question_id": "Q021",
+    "question": "How can VFDs improve fan operation when airflow requirements change, and what starting benefit can they provide?",
+    "category": "fan_systems",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      26
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p26_c1"
+    ],
+    "reference_answer": "VFDs adjust fan speed and output to meet changing airflow requirements. They are often an efficient alternative to dampers and inlet guide vanes. Their soft-start capabilities can also limit motor starting currents."
+  },
+  {
+    "question_id": "Q022",
+    "question": "Which four electrical quantities can an electrician measure at a motor control center to help assess motor-system performance?",
+    "category": "motor_assessment",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      33
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p33_c0"
+    ],
+    "reference_answer": "Input kilowatts, voltage, current, and power factor."
+  },
+  {
+    "question_id": "Q023",
+    "question": "Why is a load-duty cycle useful when evaluating motor-system improvements, and what data is it developed from?",
+    "category": "motor_assessment",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      33
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p33_c1"
+    ],
+    "reference_answer": "Motor loads can vary with weather, production demand, seasons, and product mix. A load-duty cycle developed from power-logging data indicates how much time a motor operates at different loads, helping evaluate improvement opportunities."
+  },
+  {
+    "question_id": "Q024",
+    "question": "What annual motor maintenance activities are listed in the sourcebook's common inspection table?",
+    "category": "motor_maintenance",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      39
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p39_c1"
+    ],
+    "reference_answer": "Annual activities include regreasing antifriction bearings, checking the air gap and bearing clearances, and cleaning undercut slots in the commutator."
+  },
+  {
+    "question_id": "Q025",
+    "question": "What electrical equipment can generate harmonics, how can facilities reduce their effects, and how can harmonics affect motor windings?",
+    "category": "power_quality",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      53
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p53_c1"
+    ],
+    "reference_answer": "Large nonlinear loads, including welders and VFDs, can generate harmonics. Facilities may use filtering devices and isolation transformers to reduce their effects. Harmonics can increase heat generated in motor windings at a given load."
+  },
+  {
+    "question_id": "Q026",
+    "question": "What is the exact electricity tariff at the reader's factory in September 2026?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q027",
+    "question": "What limitations make single-phase motors less suitable for many industrial applications, and what advantages do polyphase motors offer?",
+    "category": "motor_types",
+    "question_type": "comparison",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      15
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p15_c0",
+      "motor_manual.pdf_p15_c1"
+    ],
+    "reference_answer": "Integral single-phase induction motors can draw high starting currents relative to their size, tend to be less efficient than comparable three-phase motors, and have more limited speed and power-rating options. Polyphase motors offer high efficiency, favorable torque and current characteristics, and relatively low cost, making them widely used in industry."
+  },
+  {
+    "question_id": "Q028",
+    "question": "What is motor slip, how does it distinguish induction motors from synchronous motors, and what happens to slip when the motor load increases?",
+    "category": "motor_characteristics",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      17
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p17_c0",
+      "motor_manual.pdf_p17_c1"
+    ],
+    "reference_answer": "Slip is the difference between actual motor speed and synchronous speed. Induction motors operate slightly below synchronous speed, while synchronous motors operate without slip. In an induction motor, slip increases as the load increases."
+  },
+  {
+    "question_id": "Q029",
+    "question": "Which factors determine the operating speed of DC motors and AC motors?",
+    "category": "motor_characteristics",
+    "question_type": "comparison",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      20
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p20_c0"
+    ],
+    "reference_answer": "DC motor speed depends on the motor type, magnetic field strength, and load. AC motor speed depends on rotor type, number of poles, supply frequency, and slip characteristics."
+  },
+  {
+    "question_id": "Q030",
+    "question": "In the sourcebook's illustrative pumping example, how does energy use change when an adjustable-speed drive replaces control-valve-based flow control?",
+    "category": "pumping_systems",
+    "question_type": "numerical",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      24
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p24_c0"
+    ],
+    "reference_answer": "The illustration compares 100 energy units supplied to the original system with 80 units for the adjustable-speed-drive system doing the same work. The drive reduces pump flow and energy lost across the throttle valve."
+  },
+  {
+    "question_id": "Q031",
+    "question": "What are five potential consequences of choosing a motor that is larger than the application requires?",
+    "category": "motor_sizing",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      28
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p28_c1"
+    ],
+    "reference_answer": "The sourcebook lists lower efficiency, higher motor and controller costs, higher installation costs, lower power factor, and increased operating costs."
+  },
+  {
+    "question_id": "Q032",
+    "question": "Which costs and operating factors should be considered when comparing motor repair and replacement using life-cycle cost analysis?",
+    "category": "financial_analysis",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      35
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p35_c0"
+    ],
+    "reference_answer": "The comparison should consider operating hours and electricity costs, as well as motor purchase and repair costs, rather than relying only on initial cost."
+  },
+  {
+    "question_id": "Q033",
+    "question": "How can moisture, contaminated lubricant, and other contaminants damage motor winding insulation?",
+    "category": "motor_maintenance",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      38
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p38_c0",
+      "motor_manual.pdf_p38_c1"
+    ],
+    "reference_answer": "Moisture reduces insulation's dielectric strength and increases the risk of sudden failure. Contaminated lubricant can have reduced dielectric strength and encourage contaminant accumulation. Contaminants on shifting windings can also cause abrasive wear and early insulation failure."
+  },
+  {
+    "question_id": "Q034",
+    "question": "What can cause motor bearings to fail, and which operating conditions should be considered when selecting suitable bearings?",
+    "category": "motor_maintenance",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      46
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p46_c0"
+    ],
+    "reference_answer": "Bearings can fail when lubrication breaks down, lubrication is lost, or solid contaminants enter. Bearing selection should account for load, temperature, environmental conditions, speed, coupling method, lubrication method, and the frequency of motor starts and stops."
+  },
+  {
+    "question_id": "Q035",
+    "question": "What is the serial number of the main electric motor installed at my factory?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q036",
+    "question": "What is the current measured bearing temperature of the main motor at my factory?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q037",
+    "question": "How does a wound-rotor induction motor control speed and torque, and what operating advantages does it provide?",
+    "category": "motor_types",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      18
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p18_c0",
+      "motor_manual.pdf_p18_c1"
+    ],
+    "reference_answer": "A wound-rotor induction motor controls speed and torque by varying external resistance in its rotor circuit. Its advantages include excellent speed control, high starting torque, low starting current, the ability to handle high-inertia loads and frequent starts and stops, and prolonged operation at reduced speeds."
+  },
+  {
+    "question_id": "Q038",
+    "question": "How do motor circuit analysis, motor-current signature analysis, and electrical signature analysis differ in the conditions and signals they examine?",
+    "category": "motor_diagnostics",
+    "question_type": "comparison",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      41
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p41_c0",
+      "motor_manual.pdf_p41_c1"
+    ],
+    "reference_answer": "Motor circuit analysis evaluates winding and ground insulation and the rotor while equipment is de-energized. Motor-current signature analysis examines current spectra while energized to identify rotor, air-gap and load-related faults. Electrical signature analysis examines both voltage and current spectra while energized to identify current-related and supply faults."
+  },
+  {
+    "question_id": "Q039",
+    "question": "What plant distribution-system conditions can cause power-quality problems, and what preventive or investigative actions does the sourcebook recommend?",
+    "category": "power_quality",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      54
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p54_c1"
+    ],
+    "reference_answer": "Adding single-phase loads to one phase can create voltage unbalance, while deterioration of grounding can disrupt equipment or fault-clearing devices. The sourcebook recommends checking grounding adequacy, reviewing system capacity before adding loads, and performing a power-quality review when symptoms such as overheating or frequent voltage sags occur."
+  },
+  {
+    "question_id": "Q040",
+    "question": "What is the real-time power consumption of the main motor currently installed at my factory?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q041",
+    "question": "What warranty period applies to the specific wound-rotor motor installed at my plant?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q042",
+    "question": "What was the measured total harmonic distortion at my facility during its latest electrical inspection?",
     "category": "out_of_scope",
     "question_type": "unanswerable",
     "answerable": false,

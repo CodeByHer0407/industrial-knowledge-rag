@@ -9,21 +9,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 REVIEW_CANDIDATES = {
     "Q013": [
-        "motor_manual.pdf_p47_c3",
-        "motor_manual.pdf_p49_c1",
         "motor_manual.pdf_p47_c4",
+        "motor_manual.pdf_p49_c2",
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p47_c2",
     ],
-    "Q015": [
-        "motor_manual.pdf_p36_c6",
-        "motor_manual.pdf_p36_c5",
-        "motor_manual.pdf_p36_c4",
-    ],
-    "Q016": [
-        "motor_manual.pdf_p65_c0",
-        "motor_manual.pdf_p36_c0",
-        "motor_manual.pdf_p36_c2",
-        "motor_manual.pdf_p36_c3",
-        "motor_manual.pdf_p64_c5",
+    "Q024": [
+        "motor_manual.pdf_p39_c0",
+        "motor_manual.pdf_p5_c10",
     ],
 }
 
