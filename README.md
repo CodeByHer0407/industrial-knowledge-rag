@@ -211,6 +211,28 @@ Initial manually inspected answer-generation examples are documented in [`eval/a
 
 These three examples illustrate behavior; they do not establish an answer-accuracy or abstention percentage.
 
+
+### Evaluation v2 — Milestone 3: Held-Out Test Dataset
+
+A separate held-out test dataset has been created and schema-validated.
+
+| Dataset | Answerable | Unanswerable | Total |
+| --- | ---: | ---: | ---: |
+| Development | 35 | 7 | 42 |
+| Held-out test | 15 | 3 | 18 |
+| Total | 50 | 10 | 60 |
+
+The held-out test dataset includes manually identified evidence chunks
+and reference answers for answerable questions. Its SHA-256 checksum
+is recorded in `eval/test_questions.sha256`.
+
+The test set is reserved for evaluation after the retrieval configuration
+is frozen. It has not been used for retrieval tuning, and no test-set
+retrieval scores are reported at this stage.
+
+The development and test datasets use the same source document.
+The test set measures performance on held-out questions, not
+generalization to unseen documents.
 ## Automated tests
 
 ```powershell

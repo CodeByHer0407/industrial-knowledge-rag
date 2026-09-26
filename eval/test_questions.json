@@ -1,0 +1,263 @@
+[
+  {
+    "question_id": "Q043",
+    "question": "What speed adjustment range can DC motors provide, and how low can their operating speed be relative to their base speed?",
+    "category": "speed_control",
+    "question_type": "numerical",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      42
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p42_c1"
+    ],
+    "reference_answer": "DC motors can provide speed adjustment ratios as high as 20:1. They can operate at approximately 5% to 7% of base speed, and some can operate at zero RPM."
+  },
+  {
+    "question_id": "Q044",
+    "question": "How does a NEMA Design A motor differ from a comparable Design B motor, and what kind of application might require Design A?",
+    "category": "motor_selection",
+    "question_type": "comparison",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      44
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p44_c1"
+    ],
+    "reference_answer": "Design A motors generally have higher breakdown torque, higher starting current, and less slip than Design B motors. They may be selected for applications requiring large transient increases in load, such as crushers or injection molding machines."
+  },
+  {
+    "question_id": "Q045",
+    "question": "Which factors determine the voltage and enclosure specified for an industrial motor, and how does the sourcebook classify low- and medium-voltage motors?",
+    "category": "motor_selection",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      45
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p45_c0"
+    ],
+    "reference_answer": "Motor voltage is determined by the plant's available power supply, while enclosure selection depends on environmental conditions such as air quality, moisture exposure, and harmful vapors. The sourcebook calls motors rated at 600 V or below low-voltage and describes 2,300 V and 4,000 V motors as medium-voltage."
+  },
+  {
+    "question_id": "Q046",
+    "question": "What are the two principal approaches to adjusting the speed of motor-driven equipment, and what drawbacks can intermediate mechanical devices introduce?",
+    "category": "speed_control",
+    "question_type": "comparison",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      48
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p48_c0",
+      "motor_manual.pdf_p48_c1"
+    ],
+    "reference_answer": "Speed can be adjusted directly at the motor or by using a constant-speed motor with an intermediate device that changes the speed ratio. Intermediate devices such as gearing or adjustable-pitch pulley systems introduce additional components, which can increase failure risk and efficiency losses."
+  },
+  {
+    "question_id": "Q047",
+    "question": "When a service center repairs motor windings, which original coil characteristics should it reproduce, and what wire-supply capability is useful?",
+    "category": "motor_repair",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      56
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p56_c1"
+    ],
+    "reference_answer": "Unless better alternatives have been agreed upon, the repair should reproduce the original coil dimensions, number of effective turns, and cross-sectional area. The service center should stock a broad range of wire sizes or be able to obtain the required sizes quickly."
+  },
+  {
+    "question_id": "Q048",
+    "question": "According to the sourcebook's example, for a corporation with a 10% profit margin, how much sales revenue is equivalent to saving one dollar in electricity costs?",
+    "category": "motor_economics",
+    "question_type": "numerical",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      60
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p60_c0"
+    ],
+    "reference_answer": "For a company with a 10% profit margin, one dollar saved in electricity costs is equivalent to ten dollars in sales revenue."
+  },
+  {
+    "question_id": "Q049",
+    "question": "What information does the sourcebook recommend including in a proposal for an industrial energy-efficiency improvement project?",
+    "category": "motor_economics",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      60
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p60_c0",
+      "motor_manual.pdf_p60_c1"
+    ],
+    "reference_answer": "The proposal should identify specific efficiency opportunities, provide life-cycle cost results for proposed projects, identify projects with the greatest net benefits, and connect project benefits with corporate financial priorities and current needs, including relevant energy or greenhouse-gas reduction goals."
+  },
+  {
+    "question_id": "Q050",
+    "question": "What are the three main categories of in-plant electrical distribution and power-quality problems identified by the sourcebook?",
+    "category": "power_quality",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      51
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p51_c0"
+    ],
+    "reference_answer": "The three categories are voltage problems, including outages, sags, transients, surges, harmonics and other signal distortions; poor power factor; and electromagnetic interference."
+  },
+  {
+    "question_id": "Q051",
+    "question": "What five factors does the sourcebook identify as possible causes of voltage deviations?",
+    "category": "power_quality",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      52
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p52_c0"
+    ],
+    "reference_answer": "The five factors are changes in loads associated with daily or seasonal operation, improperly sized transformers, undersized conductors, poor connections, and sources of low power factor in the distribution system."
+  },
+  {
+    "question_id": "Q052",
+    "question": "How do static and dynamic UPS systems differ in the way they provide backup power?",
+    "category": "backup_power",
+    "question_type": "comparison",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      55
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p55_c1"
+    ],
+    "reference_answer": "Static UPS systems use batteries to supply power during voltage sags or interruptions. Dynamic UPS systems use the inertia of a rotating mass, usually a flywheel, to drive a generator long enough for an engine to start and take over."
+  },
+  {
+    "question_id": "Q053",
+    "question": "Which energy and environmental metrics can help demonstrate that an industrial efficiency project supports corporate energy-management goals?",
+    "category": "energy_economics",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      57
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p57_c1"
+    ],
+    "reference_answer": "Suggested metrics include expected annual energy savings in kWh or MMBtu, the percentage reduction in factory energy use, and greenhouse gas emission reductions in tonnes per year."
+  },
+  {
+    "question_id": "Q054",
+    "question": "According to the sourcebook, how can a company estimate the additional shareholder value created by an energy-efficiency project?",
+    "category": "energy_economics",
+    "question_type": "numerical",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      59
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p59_c0",
+      "motor_manual.pdf_p59_c1"
+    ],
+    "reference_answer": "First estimate the annual savings or addition to earnings generated by the project. Multiplying that earnings increase by the company's price-to-earnings ratio gives the estimated additional shareholder value."
+  },
+  {
+    "question_id": "Q055",
+    "question": "What two simultaneous measurements does a wattmeter require, and how can electricity costs be estimated for a motor operating at constant load?",
+    "category": "motor_measurement",
+    "question_type": "multi_part",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      61
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p61_c0"
+    ],
+    "reference_answer": "A wattmeter requires simultaneous voltage and current measurements. For a motor operating at constant load, multiply measured power in kW by operating hours and the electricity rate to estimate electricity costs."
+  },
+  {
+    "question_id": "Q056",
+    "question": "What is the purpose of the NOx and Energy Assessment Tool, and which industries is it intended to help?",
+    "category": "assessment_tools",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      64
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p64_c0"
+    ],
+    "reference_answer": "The NOx and Energy Assessment Tool helps petroleum refining and chemical plants assess nitrogen oxide emissions and analyze how energy-efficiency improvements could reduce them. It supports what-if analyses for equipment including fired heaters, boilers, gas turbines and reciprocating engines."
+  },
+  {
+    "question_id": "Q057",
+    "question": "How does the Energy Performance Indicator Tool measure industrial energy-performance improvements?",
+    "category": "energy_management",
+    "question_type": "factual",
+    "answerable": true,
+    "expected_document": "motor_manual.pdf",
+    "expected_pages": [
+      66
+    ],
+    "relevant_chunk_ids": [
+      "motor_manual.pdf_p66_c0"
+    ],
+    "reference_answer": "The Energy Performance Indicator Tool uses regression analysis to calculate energy-performance indicators, normalizing for weather, production and other relevant variables."
+  },
+  {
+    "question_id": "Q058",
+    "question": "At exactly what time did the most recent voltage sag occur at my factory?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q059",
+    "question": "How much did my facility pay for its most recent motor-rewinding invoice?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  },
+  {
+    "question_id": "Q060",
+    "question": "Who is the electrical contractor scheduled to inspect my factory next Tuesday?",
+    "category": "out_of_scope",
+    "question_type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_pages": [],
+    "relevant_chunk_ids": [],
+    "reference_answer": null
+  }
+]
