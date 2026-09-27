@@ -13,6 +13,7 @@ from app.vector_store import load_faiss_index
 ROOT = Path(__file__).resolve().parents[1]
 
 DEV_PATH = ROOT / "eval" / "dev_questions.json"
+TEST_PATH = ROOT / "eval" / "test_questions.json"
 INDEX_DIR = ROOT / "data" / "index"
 
 DEFAULT_OUTPUT = (
@@ -160,8 +161,41 @@ def main():
         default=10,
     )
 
+    parser.add_argument(
+        "--dataset",
+        choices=("dev", "test"),
+        default="dev",
+    )
+
+    parser.add_argument(
+        "--confirm-heldout",
+        action="store_true",
+        help="Explicitly authorize the held-out test run.",
+    )
+
     args = parser.parse_args()
 
+    if args.dataset == "test":
+        if not args.confirm_heldout:
+            parser.error(
+                "Use --confirm-heldout to run the test dataset."
+            )
+
+        if not args.all:
+            parser.error(
+                "Use --all when evaluating the test dataset."
+            )
+
+        if args.output.resolve() == DEFAULT_OUTPUT.resolve():
+            parser.error(
+                "Specify a separate output file for the test run."
+            )
+
+        if args.output.exists():
+            parser.error(
+                "The test output already exists. "
+                "Refusing to overwrite a previous run."
+            )
     # --------------------------------------------------
     # 2. Validate configuration
     # --------------------------------------------------
@@ -190,9 +224,10 @@ def main():
 
     # Deliberately load only the development dataset.
     # The held-out test set remains untouched.
-    questions = load_evaluation_dataset(
-        DEV_PATH
+    dataset_path = (
+        TEST_PATH if args.dataset == "test" else DEV_PATH
     )
+    questions = load_evaluation_dataset(dataset_path)
 
     questions_by_id = {
         question["question_id"]: question
@@ -281,7 +316,7 @@ def main():
     # --------------------------------------------------
 
     report = {
-        "dataset": "dev",
+        "dataset": args.dataset,
         "created_at_utc": (
             datetime.now(timezone.utc).isoformat()
         ),
