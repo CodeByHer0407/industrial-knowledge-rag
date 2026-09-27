@@ -1,57 +1,92 @@
 # Industrial Knowledge-Base RAG Assistant
 
-A local-first Retrieval-Augmented Generation (RAG) application for asking natural-language questions about industrial technical documentation. It extracts text from a PDF, retrieves relevant passages with Sentence Transformers and FAISS, generates answers using a local Ollama model, and reports source citations and citation-reference validation through a CLI and FastAPI.
+A **local-first Retrieval-Augmented Generation (RAG)** prototype for asking natural-language questions about industrial technical documentation. The application extracts text from a PDF, indexes page-aware passages with Sentence Transformers and FAISS, retrieves supporting evidence, and generates source-cited answers using a local Ollama model. It includes a CLI, FastAPI endpoints, multiple retrieval methods, automated tests, and separate development and held-out evaluations.
 
-**Current scope:** A working, single-document prototype using a publicly available industrial motor sourcebook. This is a portfolio project, not a production-validated technical decision system.
+**Scope:** An evaluated, single-document portfolio prototype built using a publicly available industrial motor sourcebook. It is not a production-validated technical decision system.
 
-## Features
+## Highlights
 
-- **Document ingestion:** Extract text from text-based PDFs using PyMuPDF; retain source filename and PDF page number.
-- **Page-aware chunking:** Split each page into 120-word chunks with 25-word overlap and retain chunk IDs.
-- **Targeted preprocessing:** Remove identified standalone page-header chunks before indexing.
-- **Semantic retrieval:** Generate normalized `all-MiniLM-L6-v2` embeddings and search a persistent FAISS `IndexFlatIP` index.
-- **Document-grounded generation:** Build an evidence-only prompt and use `llama3.2:3b` through local Ollama. A separate OpenAI client is implemented but **not required** for local use.
-- **Traceability:** Return retrieved passages, scores, source filenames, page numbers, and bracketed source citations.
-- **Citation-reference checks:** Detect citations to source/page pairs that were not retrieved and flag missing or malformed bracketed citations. Explicit insufficient-evidence responses are marked as abstentions.
-- **Interfaces and tests:** CLI, FastAPI `/health` and `/ask` endpoints, legacy and expanded development-set retrieval evaluation, and automated pytest tests.
-- **Evaluation dataset checks:** Validate question schema and relevance labels; distinguish answerable from unanswerable questions; require an explicit confirmation flag before running an eventual untouched final-test set.
+- **Document pipeline:** PyMuPDF extraction, 120-word page-aware chunks with 25-word overlap, source/page/chunk metadata, and targeted removal of standalone header chunks.
+- **Retrieval:** Normalized `all-MiniLM-L6-v2` embeddings (384 dimensions) with persistent FAISS `IndexFlatIP`; optional BM25 and FAISS + BM25 hybrid search with reciprocal rank fusion (RRF).
+- **Context expansion:** Optionally include neighboring chunks from the **same source and PDF page**. The frozen evaluation configuration starts from FAISS top 5 and expands to at most 10 context passages.
+- **Grounded generation:** Local `llama3.2:3b` through Ollama, an evidence-only prompt, explicit insufficient-evidence abstention, and source/page citation-reference checks. An optional OpenAI client exists but is **not used** for the local evaluations.
+- **Engineering:** CLI, FastAPI `GET /health` and `POST /ask`, persistent index and metadata, reproducible evaluation scripts, and **101 passing automated tests** in the latest reported local run.
+
+## Results at a glance
+
+The final configuration was selected using the development questions and then evaluated **once on 18 held-out questions** without tuning on those questions. Both datasets concern the **same source PDF**; the held-out set tests unseen questions, not unseen documents.
+
+### Retrieval
+
+| Metric | Development (35 answerable) | Held-out (15 answerable) |
+|---|---:|---:|
+| FAISS labeled Hit@5 | **33/35 (94.29%)** | **12/15 (80.00%)** |
+| FAISS macro labeled Recall@5 | 0.8619 | 0.7667 |
+| FAISS MRR@5 | 0.8081 | 0.6556 |
+| FAISS + adjacent expansion: labeled evidence in context | **34/35 (97.14%)** | **13/15 (86.67%)** |
+
+*Hit@5* counts questions for which at least one **labeled** supporting passage is among the five original FAISS results. *Expanded evidence coverage* checks the full prompt context after adjacent-chunk expansion (up to 10 passages); **it is not Hit@5**. Labels may omit alternative valid passages. Unanswerable questions are excluded from positive retrieval metrics.
+
+### Answer generation — frozen FAISS + expansion configuration
+
+| Metric | Development (42 questions) | Held-out (18 questions) |
+|---|---:|---:|
+| Answerable questions receiving an answer | 34/35 | 13/15 |
+| Incorrect abstentions on answerable questions | 1/35 | 2/15 |
+| Correct abstentions on unanswerable questions | 7/7 | 3/3 |
+| Formally valid citation references among generated answers | 29/34 (85.29%) | 8/13 (61.54%) |
+
+A preliminary qualitative review of held-out answers against reference answers and retrieved excerpts identified **8 complete, 4 partial, and 3 incorrect** responses among the 15 answerable questions. These review labels are a first pass, **not independently adjudicated answer-accuracy statistics**. Citation validation checks syntax and whether a cited page was retrieved; it does **not** verify claim-level factual support.
+
+See [`eval/reports/heldout_faiss_expanded_report.md`](eval/reports/heldout_faiss_expanded_report.md) for the held-out protocol, per-question review, observed failures, and reproduction command. Development retrieval comparisons are recorded in [`eval/reports/dev_retrieval_comparison.json`](eval/reports/dev_retrieval_comparison.json).
 
 ## Architecture
 
 ```mermaid
 flowchart TD
-    PDF[PDF sourcebook] --> Extract[PyMuPDF text extraction]
-    Extract --> Chunk[Page-aware chunking]
-    Chunk --> Filter[Header-only chunk filtering]
-    Filter --> Embed[MiniLM embeddings]
-    Embed --> Index[FAISS index + JSON metadata]
-    Question[User question] --> QueryEmbed[Question embedding]
-    QueryEmbed --> Index
-    Index --> Retrieve[Top-k passages + source metadata]
-    Retrieve --> Prompt[Evidence-grounded prompt]
+    PDF[Industrial motor PDF] --> Extract[PyMuPDF extraction]
+    Extract --> Chunk[Page-aware overlapping chunks]
+    Chunk --> Filter[Targeted header filtering]
+    Filter --> Embed[MiniLM document embeddings]
+    Embed --> Store[FAISS index and JSON metadata]
+
+    Question[User question] --> QueryEmbed[MiniLM query embedding]
+    QueryEmbed --> Faiss[FAISS semantic search]
+    Store --> Faiss
+    Chunk --> BM25[Optional BM25 lexical index]
+    Question --> BM25
+    Faiss --> Select[Select retrieval mode]
+    BM25 --> Hybrid[Optional RRF hybrid retrieval]
+    Faiss --> Hybrid
+    Hybrid --> Select
+    Select --> Expand[Optional same-page adjacent expansion]
+    Expand --> Prompt[Evidence-grounded prompt]
     Question --> Prompt
-    Prompt --> LLM[Local Ollama: Llama 3.2 3B]
-    LLM --> Validate[Citation-reference validation / abstention status]
-    Validate --> Output[Answer + sources + status + validation report]
+    Prompt --> Ollama[Local Ollama / Llama 3.2 3B]
+    Ollama --> Check[Citation-reference and abstention checks]
+    Check --> Answer[Answer, retrieved sources, status and validation]
 ```
 
-Index construction is separate from querying. The FastAPI application lazily loads and caches the saved FAISS index and embedding model when `/ask` is first called. The `/health` endpoint checks API liveness, not index or Ollama readiness.
+Index construction is separate from querying. The API lazily loads and caches the saved FAISS index and embedding model on first use of `/ask`. The `/health` endpoint checks API liveness; it does not establish that the index or Ollama is ready.
+
+**Benchmark configuration:** FAISS top 5 + same-page adjacent-chunk expansion (maximum 10 passages), followed by local Ollama generation. BM25 and hybrid retrieval are implemented alternatives but **were not the selected held-out configuration**. The documented held-out metrics come from the batch evaluator with `--retrieval-mode faiss_expanded`; do not assume a default CLI or API request uses identical retrieval settings.
 
 ## Tech stack
 
 | Component | Technology |
-| --- | --- |
-| Language / API | Python 3.11, FastAPI, Pydantic |
-| PDF extraction | PyMuPDF |
+|---|---|
+| Language and API | Python 3.11, FastAPI, Pydantic |
+| PDF ingestion | PyMuPDF |
 | Embeddings | Sentence Transformers, `all-MiniLM-L6-v2` (384 dimensions) |
-| Vector search | FAISS `IndexFlatIP` with L2-normalized vectors (cosine similarity) |
-| Local answer generation | Ollama, `llama3.2:3b` |
-| Optional cloud client | OpenAI (not used in the local workflow) |
+| Dense search | FAISS `IndexFlatIP`, L2-normalized vectors |
+| Alternative retrieval | BM25, reciprocal rank fusion (hybrid) |
+| Local generation | Ollama, `llama3.2:3b` |
+| Optional cloud client | OpenAI (not required or used for reported evaluations) |
 | Testing | pytest, FastAPI TestClient / HTTPX |
 
-## Quick start: Windows PowerShell
+## Quick start — Windows PowerShell
 
-**Prerequisites:** Git, Conda with Python 3.11, and [Ollama for Windows](https://ollama.com/download/windows). An internet connection is needed for the initial Python dependency, embedding-model, and Ollama-model downloads. Local inference does not require OpenAI credits.
+**Prerequisites:** Git, Conda with Python 3.11, and [Ollama for Windows](https://ollama.com/download/windows). Initial dependency and model downloads require internet access. Local question answering does not require OpenAI credits.
 
 ### 1. Clone and install
 
@@ -63,51 +98,47 @@ conda activate industrial-rag
 python -m pip install -r requirements.txt
 ```
 
-### 2. Obtain the sample PDF
+### 2. Obtain the sample sourcebook
 
-This project uses the U.S. Department of Energy sourcebook **Improving Motor and Drive System Performance**:
-
-https://www.energy.gov/sites/prod/files/2014/04/f15/amo_motors_sourcebook_web.pdf
-
-Create the input directory, download the PDF from the source above, and save it with this exact name:
+This project uses the U.S. Department of Energy's [*Improving Motor and Drive System Performance: A Sourcebook for Industry*](https://www.energy.gov/sites/prod/files/2014/04/f15/amo_motors_sourcebook_web.pdf).
 
 ```powershell
 New-Item -ItemType Directory -Force data/raw
-# Save the downloaded PDF as: data/raw/motor_manual.pdf
+# Download the linked PDF and save it as data/raw/motor_manual.pdf
 ```
 
-The PDF and generated index are deliberately excluded from Git; they are not bundled with the repository. Check the source's terms before redistributing its content.
+The raw PDF and generated FAISS index are intentionally excluded from Git. Check the source's terms before redistributing its content.
 
-### 3. Build the FAISS index
+### 3. Build the index
 
 ```powershell
 python -m scripts.build_index
 ```
 
-This extracts pages, makes overlapping chunks, filters identified header-only chunks, embeds the remaining text, and saves `data/index/index.faiss` and `data/index/metadata.json`. In the documented sample run, 528 generated chunks were reduced to **524 indexed chunks** after removing four header-only chunks. If you change the document or indexing configuration, rebuild the index.
+The documented build generated **528 chunks**, filtered out four standalone header chunks, and saved **524 indexed chunks** to `data/index/index.faiss` with passage metadata in `data/index/metadata.json`. Rebuild the index if the document or preprocessing configuration changes.
 
-### 4. Download the local generation model
+### 4. Download and start the local LLM
 
 ```powershell
 ollama run llama3.2:3b
 ```
 
-The first run downloads the model; enter `/bye` to exit its chat. Keep the Ollama service running when you use the application. On Windows, the Ollama app normally manages the local server; if the app is not running, start it before making requests.
+The first run downloads the model. Enter `/bye` to exit the model's chat, and ensure the Ollama service remains running when using this project. On Windows, the Ollama application normally manages the service.
 
-### 5. Ask a question locally
+### 5. Ask a question from the CLI
 
 ```powershell
-# Retrieval + prompt preview; no LLM call:
+# Retrieve passages and preview the prompt without calling the LLM:
 python -m scripts.ask "How can motor efficiency be improved?"
 
-# Full local RAG answer (no paid API):
+# Generate a local answer using Ollama:
 python -m scripts.ask "What happens when a motor operates below 40% of full load?" --provider ollama --live
 
-# See the exact retrieved prompt:
+# Show the constructed retrieval-grounded prompt:
 python -m scripts.preview_rag_prompt "How can motor efficiency be improved?"
 ```
 
-The CLI displays retrieved source pages and similarity scores. In live mode, it also prints the generated answer and citation-reference validation. A valid citation reference **does not prove** that the cited text supports every claim.
+The CLI displays retrieved passages, pages, and similarity scores; live mode also displays the generated answer and citation-reference checks. These commands document the existing CLI; the expanded evaluation configuration is invoked explicitly through the batch evaluator below.
 
 ### 6. Run the API
 
@@ -115,7 +146,7 @@ The CLI displays retrieved source pages and similarity scores. In live mode, it 
 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) for the interactive API documentation. For example, send this JSON body to `POST /ask`:
+Open <http://127.0.0.1:8000/docs> for interactive API documentation. Example `POST /ask` request:
 
 ```json
 {
@@ -124,145 +155,59 @@ Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) for the interactiv
 }
 ```
 
-The response contains `question`, `answer`, `sources`, `answer_status` (`answered`, `abstained`, or `no_context`), and `citation_validation` (a report or `null` when not applicable). `GET /health` checks whether the API is responding. The current `/ask` implementation uses local Ollama; it does not call OpenAI.
+The response includes `question`, `answer`, `sources`, `answer_status` (`answered`, `abstained`, or `no_context`), and `citation_validation` (a report or `null` when not applicable). The current `/ask` path uses local Ollama, not OpenAI.
 
-## Evaluation
+## Evaluation protocol and reproduction
 
-The evaluation workflow retains the original 10-question baseline in `eval/questions.json` and maintains an expanded, manually curated development dataset in `eval/dev_questions.json`. The dataset loader in `app/eval_dataset.py` validates required fields, unique IDs, source/page labels, and answerability rules. `scripts/evaluate_retrieval.py` supports `--dataset legacy`, `--dataset dev` (the default), and `--dataset test`. Final-test evaluation requires `--confirm-final` and should be run only after the retrieval configuration is frozen; the final-test dataset is **not yet prepared**.
+| Dataset | Answerable | Unanswerable | Total | Purpose |
+|---|---:|---:|---:|---|
+| `eval/questions.json` | 10 legacy technical questions | — | 10 | Historical retrieval baseline |
+| `eval/dev_questions.json` | 35 | 7 | 42 | Retrieval development and configuration selection |
+| `eval/test_questions.json` | 15 | 3 | 18 | Single final held-out question evaluation |
+
+The 18-question test set was separated from development and its SHA-256 recorded in `eval/test_questions.sha256`. Its digest was checked successfully against that file before final evaluation. The configuration was frozen at **FAISS top 5 + same-page expansion to at most 10 passages + `llama3.2:3b`**. Results were recorded on **27 September 2026**; no retrieval or prompt tuning was performed using these test questions.
+
+### Development retrieval comparisons
+
+The following comparison uses the 35 answerable development questions and the 524-chunk index:
+
+| Retrieval method | Labeled Hit@5 | Macro labeled Recall@5 | MRR@5 |
+|---|---:|---:|---:|
+| FAISS | 94.29% | 86.19% | 0.8081 |
+| BM25 | 85.71% | 80.95% | 0.8000 |
+| Hybrid FAISS + BM25 (RRF) | 91.43% | 87.62% | 0.8486 |
+
+FAISS + expansion placed labeled evidence in context for **34/35** questions; hybrid + expansion did so for **33/35**. FAISS + expansion was selected for held-out evaluation based on these development findings. A different method having a higher MRR@5 does not by itself demonstrate better answer generation.
 
 ```powershell
-# Reproduce the original 10-question baseline:
-python -m scripts.evaluate_retrieval --dataset legacy
+# Recompute development retrieval comparisons:
+python -m scripts.compare_retrieval_methods
 
-# Evaluate the expanded development set:
-python -m scripts.evaluate_retrieval --dataset dev
+# Reproduce development answer generation (uses local Ollama):
+python -m scripts.evaluate_answers_batch --all --retrieval-mode faiss_expanded --top-k 5 --max-context-chunks 10 --output eval/runs/dev_ollama_faiss_expanded_full.json
 
-# Run the automated test suite:
+# Verify held-out dataset integrity:
+(Get-FileHash .\eval\test_questions.json -Algorithm SHA256).Hash -eq (Get-Content .\eval\test_questions.sha256).Trim()
+
+# Run automated tests:
 python -m pytest -q
+```
+
+The original **held-out** generation used the following command **once, after freezing the configuration**. The saved output is a record of that run; new runs may yield different LLM outputs and should use a separate filename rather than overwriting it.
+
+```powershell
+python -m scripts.evaluate_answers_batch --dataset test --all --confirm-heldout --retrieval-mode faiss_expanded --top-k 5 --max-context-chunks 10 --output eval/runs/test_ollama_faiss_expanded_full.json
 ```
 
 ### Historical 10-question baseline
 
-| Retrieval metric | Original index (528 chunks) | Filtered index (524 chunks) |
-| --- | ---: | ---: |
+| Metric | Original index (528 chunks) | Filtered index (524 chunks) |
+|---|---:|---:|
 | Hit Rate@5 | 1.000 | 1.000 |
 | Labeled Recall@5 | 0.850 | 0.850 |
 | MRR@5 | 0.750 | 0.775 |
 
-### Evaluation v2 — Milestone 1 (September 2026)
-
-The expanded development set contains **17 questions: 16 answerable and 1 intentionally unanswerable**, using the saved 524-chunk index. An initial relevance-label audit added evidence for Q010 and Q016 and reviewed other high-ranking candidate passages. The original legacy baseline is preserved separately.
-
-| Metric | Expanded development set |
-| --- | ---: |
-| Answerable questions scored | 16 |
-| Unanswerable questions excluded from positive retrieval metrics | 1 |
-| Hit Rate@5 | 0.9375 |
-| Labeled Recall@5 | 0.8229 |
-| MRR@5 | 0.7969 |
-
-**Known failure:** Q013, a multipart question about VFD effects on pump flow/power and high static head, did not retrieve its currently labeled passage within the top five. Other top-ranked passages discuss related VFD concepts. This case is retained for later relevance review and retrieval experiments rather than relabeled simply to improve the score.
-
-These are **small, development-set diagnostics—not estimates of general retrieval accuracy**. Questions and relevance labels were developed with reference to the indexed document; relevant passages may remain unlabeled. The unanswerable question is excluded from these positive retrieval metrics; adding an unanswerable question does **not** establish abstention performance. Broader curated coverage, a separate untouched final-test set, and systematic answer-level correctness, citation support, and abstention evaluation are still planned.
-
-### Evaluation v2 — Milestone 2: Expanded Development Benchmark (September 2026)
-
-The development dataset has been expanded to **42 manually curated questions:
-35 answerable and 7 intentionally unanswerable**, covering motor
-characteristics, pumping and fan systems, electrical safety, motor
-maintenance, power quality, economics, and diagnostic methods.
-
-The current evaluation uses the saved FAISS index containing **524 chunks**.
-Positive retrieval metrics are calculated using the 35 answerable
-questions. Unanswerable questions are reserved for answer-level
-abstention evaluation.
-
-| Retrieval metric | 42-question development set |
-| --- | ---: |
-| Answerable questions scored | 35 |
-| Unanswerable questions excluded | 7 |
-| Hit Rate@5 | 0.9429 |
-| Labeled Recall@5 | 0.8619 |
-| MRR@5 | 0.8081 |
-
-**Known retrieval limitations:**
-
-- **Q013:** The labeled VFD passage is missing from the top five, although
-  multiple retrieved passages collectively provide relevant evidence.
-- **Q024:** The annual maintenance activities occur in a chunk that is
-  not retrieved. An earlier portion of the same inspection table is
-  returned instead, illustrating a chunk-boundary limitation.
-
-These are development-set diagnostics, not estimates of general
-retrieval accuracy. The dataset was curated using the indexed source,
-and relevance labels may remain incomplete.
-
-The next evaluation milestone is an independent, held-out
-18-question test set. It will remain unused during retrieval tuning
-and will be evaluated after the retrieval configuration is frozen.
-
-Initial manually inspected answer-generation examples are documented in [`eval/answer_evaluation.md`](eval/answer_evaluation.md):
-
-| Example | Observation |
-| --- | --- |
-| Improving motor efficiency | Cited a retrieved page but overgeneralized qualified statements about motor design and enclosure. |
-| Operating below 40% full load | Answer about low efficiency and poor power factor was supported by a retrieved passage on PDF page 27. |
-| Facility Wi-Fi password | Abstained with an insufficient-documentation response instead of inventing a password. |
-
-These three examples illustrate behavior; they do not establish an answer-accuracy or abstention percentage.
-
-
-### Evaluation v2 — Milestone 3: Held-Out Test Dataset
-
-A separate held-out test dataset has been created and schema-validated.
-
-| Dataset | Answerable | Unanswerable | Total |
-| --- | ---: | ---: | ---: |
-| Development | 35 | 7 | 42 |
-| Held-out test | 15 | 3 | 18 |
-| Total | 50 | 10 | 60 |
-
-The held-out test dataset includes manually identified evidence chunks
-and reference answers for answerable questions. Its SHA-256 checksum
-is recorded in `eval/test_questions.sha256`.
-
-The test set is reserved for evaluation after the retrieval configuration
-is frozen. It has not been used for retrieval tuning, and no test-set
-retrieval scores are reported at this stage.
-
-The development and test datasets use the same source document.
-The test set measures performance on held-out questions, not
-generalization to unseen documents.
-
-### Answer-Level Evaluation — Development Set
-
-Evaluated local Llama 3.2 3B responses on 42 development questions
-using top-5 FAISS retrieval from a 524-chunk index.
-
-| Metric | Result |
-| --- | ---: |
-| Answerable questions | 35 |
-| Unanswerable questions | 7 |
-| Complete answers | 16/35 (45.71%) |
-| Partial answers | 17/35 |
-| Incorrect abstentions | 2/35 |
-| Correct abstentions | 7/7 (100%) |
-| Valid citation references | 27/33 (81.82%) |
-
-Manual review identified 32 answers with supported claims and one
-with partially supported claims, among the 33 generated answers.
-
-Key observed failure categories:
-- Incomplete answers despite relevant retrieved evidence.
-- Incorrect abstention when sufficient evidence was retrieved.
-- Retrieval of an incomplete table passage.
-- Missing, incorrectly formatted or invalid citation references.
-
-These figures describe one development-set run using proposed manual
-review labels. They are not held-out benchmark results.
-
-The 18-question held-out test set remains reserved until retrieval
-and generation settings have been finalized.
+The historical sample is small and was used during development; it is **not** the held-out benchmark. Separately, the original **FAISS-only** generation baseline on 35 answerable development questions received preliminary review labels of **16 complete, 17 partial, and 2 incorrect abstentions**; 7/7 unanswerable questions were correctly abstained on. These historical answer-review counts must not be attributed to the later FAISS + expansion run.
 
 ## Automated tests
 
@@ -270,53 +215,36 @@ and generation settings have been finalized.
 python -m pytest -q
 ```
 
-**Latest reported local run:** **71 passed, 1 third-party Starlette/AnyIO deprecation warning (September 26, 2026)**. The tests cover document processing, retrieval, persistence, evaluation dataset validation, final-test confirmation, prompt construction, client behavior, citation-reference validation, RAG orchestration, CLI, and API. The automated tests use mocks/synthetic fixtures where appropriate; they do not establish that the LLM's answers are always factual or grounded.
+**Latest reported local run (27 September 2026): 101 passed, 1 third-party Starlette/AnyIO deprecation warning.** Tests cover ingestion and preprocessing, search and retrieval alternatives, adjacent expansion, persistence, dataset validation, citation-reference checks, RAG orchestration, CLI, and API. Mocked and synthetic tests validate code behavior; they do not prove generated-answer correctness or deployment readiness.
 
 ## Repository layout
 
 ```text
-app/       PDF ingestion, preprocessing, chunking, embeddings, FAISS,
-           dataset validation, prompting, LLM clients, RAG pipeline,
-           citation checks, API
-scripts/   Index building, retrieval, dataset migration and curation,
-           evaluation, prompt preview, Q&A CLI
-tests/     Automated unit, evaluation-schema, and API tests
-eval/      Legacy and development questions, manual answer-evaluation notes
-data/      Local raw PDF and generated FAISS artifacts (ignored by Git)
+app/          PDF ingestion, chunking, embeddings, FAISS, BM25,
+              hybrid retrieval, adjacent expansion, prompting,
+              LLM clients, citation validation, API
+scripts/      Index building, CLI, prompt previews, retrieval comparison,
+              batch answer generation and evaluation tools
+tests/        Unit, evaluation-schema, retrieval, pipeline, CLI and API tests
+eval/         Legacy, development and held-out question sets;
+              evaluation reports and optional local run outputs
+data/raw/     Local source PDFs (ignored by Git)
+data/index/   Generated FAISS index and metadata (ignored by Git)
 ```
 
-## Limitations and next steps
+## Limitations and future work
 
-- Only one configured, text-based sample PDF is indexed by the current script; scanned PDFs require OCR, which is not implemented.
-- PDF extraction may introduce broken words, lose table structure, or split sentences at fixed-size chunk boundaries.
-- Top-k vector retrieval can return irrelevant passages, including
-  bibliography content. On the current 42-question development set,
-  two labeled-passage retrieval misses remain: Q013 and Q024.
-  The current evaluation does not fully measure evidence that can be
-  combined across multiple retrieved passages. There is no calibrated
-  out-of-domain similarity threshold.
-- The LLM can overgeneralize, omit citations, or cite valid pages that do not fully support its claims. Citation validation checks *references*, not claim-level faithfulness.
-- Abstention recognition currently relies on one exact response string, so alternate refusal phrasing may not be recognized.
-- FastAPI caches local resources after first use; `/health` is not a dependency-readiness check. The local model requires sufficient system memory and may be slow on some computers.
-- Dependency-version pinning/compatibility verification, containerization, a frontend, multi-document ingestion, expanded evaluation, and hybrid retrieval/reranking remain future work. A GitHub Actions CI workflow has been used previously; each new milestone still needs its own remote CI run after pushing.
+- **Single-document, text-based prototype.** No general multi-document ingestion or OCR for scanned PDFs; both evaluation sets use the same sourcebook.
+- **Retrieval is imperfect.** The frozen held-out run missed labeled evidence for Q049 and Q050 even after expansion. In Q043, the labeled chunk was missed by FAISS top five, but a different retrieved passage on page 20 contained equivalent relevant facts. Strict label-based metrics may undercount valid alternative evidence.
+- **PDF structure is imperfect.** Fixed-size chunk boundaries, text extraction artifacts, tables of contents, and flattened tables can introduce low-signal or misleading context.
+- **Generation and citation reliability require improvement.** The held-out run incorrectly abstained on Q049/Q050; Q045 confused motor voltage and enclosure selection despite having the relevant passage. Five of 13 held-out generated answers had missing or malformed citation references. A valid cited page is **not** proof that every claim is supported.
+- **Operational scope is limited.** Abstention recognition currently relies on an exact insufficient-evidence response, `/health` is a liveness check rather than a dependency-readiness check, and local generation speed depends on available hardware. There is no calibrated out-of-domain threshold or production safety validation.
+- **Potential future enhancements:** Generalized TOC filtering, structure-aware PDF table parsing, reranking, claim-level citation verification, multi-document ingestion, OCR, containerization, stronger reproducibility checks and a frontend. These are **not** part of the reported held-out configuration.
 
-## Data and privacy
+## Data, privacy and attribution
 
-The sample sourcebook is attributed above and is not committed to this repository. `data/raw/`, `data/index/`, virtual environments, and `.env` files are ignored. Do not commit proprietary manuals, credentials, or personally identifiable information. The documented Ollama answer-generation path runs locally after setup, while initial installation/model downloads use network access.
+The sample sourcebook is attributed and linked in the setup section. Source PDFs, local FAISS artifacts, virtual environments and `.env` files are excluded from version control. Do not commit proprietary manuals, credentials or personal data. The documented Ollama path performs model inference locally after initial downloads.
 
-## Project status
+## Status
 
-**Working prototype + Evaluation v2 Milestone 2 complete:**
-
-PDF ingestion → page-aware chunking → Sentence Transformers embeddings →
-FAISS retrieval → local Ollama answer generation → citation-reference
-validation, accessible through CLI and FastAPI.
-
-The development benchmark now contains 42 curated questions
-(35 answerable, 7 unanswerable). Current retrieval results are
-Hit Rate@5 = 0.9429, Labeled Recall@5 = 0.8619,
-and MRR@5 = 0.8081. The latest automated test run passed all 71 tests.
-
-Next: prepare the untouched 18-question final-test set,
-introduce systematic answer-level evaluation, and experiment with
-hybrid retrieval and reranking before final-test evaluation.
+**Portfolio-ready single-document RAG prototype; frozen development and held-out evaluation completed (September 2026).** The project demonstrates PDF ingestion, dense/lexical/hybrid retrieval, adjacent-context expansion, local grounded generation, an API, structured evaluation and automated tests. Its measured limitations are documented rather than described as production-ready accuracy.
