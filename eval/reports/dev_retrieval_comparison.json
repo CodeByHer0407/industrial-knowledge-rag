@@ -1,0 +1,1816 @@
+{
+  "dataset": "dev",
+  "total_dev_questions": 42,
+  "evaluated_answerable_questions": 35,
+  "top_k": 5,
+  "candidate_k": 20,
+  "max_context_chunks": 10,
+  "metrics": {
+    "faiss": {
+      "questions": 35,
+      "hits": 33,
+      "hit_at_5": 0.9429,
+      "labeled_recall_at_5": 0.8619,
+      "mrr_at_5": 0.8081
+    },
+    "bm25": {
+      "questions": 35,
+      "hits": 30,
+      "hit_at_5": 0.8571,
+      "labeled_recall_at_5": 0.8095,
+      "mrr_at_5": 0.8
+    },
+    "hybrid": {
+      "questions": 35,
+      "hits": 32,
+      "hit_at_5": 0.9143,
+      "labeled_recall_at_5": 0.8762,
+      "mrr_at_5": 0.8486
+    }
+  },
+  "expanded_context_coverage": {
+    "questions": 35,
+    "questions_with_labeled_evidence": 33,
+    "coverage_rate": 0.9429
+  },
+  "faiss_expanded_context_coverage": {
+    "questions": 35,
+    "questions_with_labeled_evidence": 34,
+    "coverage_rate": 0.9714
+  },
+  "improved_vs_faiss": [
+    "Q013"
+  ],
+  "regressed_vs_faiss": [
+    "Q003",
+    "Q030"
+  ],
+  "results": [
+    {
+      "question_id": "Q001",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p29_c2"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p29_c2",
+        "motor_manual.pdf_p29_c1",
+        "motor_manual.pdf_p51_c7",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p69_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p6_c3",
+        "motor_manual.pdf_p65_c4",
+        "motor_manual.pdf_p51_c6",
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p18_c3"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p29_c2",
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p29_c1",
+        "motor_manual.pdf_p29_c0",
+        "motor_manual.pdf_p61_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p29_c2",
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p29_c1",
+        "motor_manual.pdf_p29_c0",
+        "motor_manual.pdf_p61_c0",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p23_c2",
+        "motor_manual.pdf_p61_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p29_c2",
+        "motor_manual.pdf_p29_c1",
+        "motor_manual.pdf_p51_c7",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p69_c0",
+        "motor_manual.pdf_p29_c0",
+        "motor_manual.pdf_p51_c6",
+        "motor_manual.pdf_p29_c4",
+        "motor_manual.pdf_p69_c1"
+      ]
+    },
+    {
+      "question_id": "Q002",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p43_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p5_c2",
+        "motor_manual.pdf_p43_c1",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p60_c5",
+        "motor_manual.pdf_p72_c1"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p27_c2",
+        "motor_manual.pdf_p27_c1",
+        "motor_manual.pdf_p27_c0",
+        "motor_manual.pdf_p43_c1",
+        "motor_manual.pdf_p88_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p43_c1",
+        "motor_manual.pdf_p27_c1",
+        "motor_manual.pdf_p60_c5",
+        "motor_manual.pdf_p27_c2",
+        "motor_manual.pdf_p29_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p43_c1",
+        "motor_manual.pdf_p27_c1",
+        "motor_manual.pdf_p60_c5",
+        "motor_manual.pdf_p27_c2",
+        "motor_manual.pdf_p29_c0",
+        "motor_manual.pdf_p43_c0",
+        "motor_manual.pdf_p43_c2",
+        "motor_manual.pdf_p27_c0",
+        "motor_manual.pdf_p60_c4",
+        "motor_manual.pdf_p60_c6"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p5_c2",
+        "motor_manual.pdf_p43_c1",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p60_c5",
+        "motor_manual.pdf_p72_c1",
+        "motor_manual.pdf_p5_c1",
+        "motor_manual.pdf_p5_c3",
+        "motor_manual.pdf_p43_c0",
+        "motor_manual.pdf_p43_c2",
+        "motor_manual.pdf_p29_c2"
+      ]
+    },
+    {
+      "question_id": "Q003",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p29_c2",
+        "motor_manual.pdf_p29_c3"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p11_c3",
+        "motor_manual.pdf_p31_c2",
+        "motor_manual.pdf_p31_c3"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p31_c3",
+        "motor_manual.pdf_p65_c1",
+        "motor_manual.pdf_p25_c2",
+        "motor_manual.pdf_p31_c2",
+        "motor_manual.pdf_p27_c4"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p31_c3",
+        "motor_manual.pdf_p31_c2",
+        "motor_manual.pdf_p11_c3",
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p36_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p31_c3",
+        "motor_manual.pdf_p31_c2",
+        "motor_manual.pdf_p11_c3",
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p36_c0",
+        "motor_manual.pdf_p31_c4",
+        "motor_manual.pdf_p31_c1",
+        "motor_manual.pdf_p11_c2",
+        "motor_manual.pdf_p11_c4",
+        "motor_manual.pdf_p34_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p11_c3",
+        "motor_manual.pdf_p31_c2",
+        "motor_manual.pdf_p31_c3",
+        "motor_manual.pdf_p34_c1",
+        "motor_manual.pdf_p29_c2",
+        "motor_manual.pdf_p29_c4",
+        "motor_manual.pdf_p11_c2",
+        "motor_manual.pdf_p11_c4"
+      ]
+    },
+    {
+      "question_id": "Q004",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p16_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p16_c0",
+        "motor_manual.pdf_p16_c1",
+        "motor_manual.pdf_p73_c4",
+        "motor_manual.pdf_p73_c3",
+        "motor_manual.pdf_p18_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p16_c1",
+        "motor_manual.pdf_p16_c2",
+        "motor_manual.pdf_p16_c0",
+        "motor_manual.pdf_p15_c2",
+        "motor_manual.pdf_p16_c5"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p16_c1",
+        "motor_manual.pdf_p16_c0",
+        "motor_manual.pdf_p16_c2",
+        "motor_manual.pdf_p15_c2",
+        "motor_manual.pdf_p73_c3"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p16_c1",
+        "motor_manual.pdf_p16_c0",
+        "motor_manual.pdf_p16_c2",
+        "motor_manual.pdf_p15_c2",
+        "motor_manual.pdf_p73_c3",
+        "motor_manual.pdf_p16_c3",
+        "motor_manual.pdf_p15_c1",
+        "motor_manual.pdf_p15_c3",
+        "motor_manual.pdf_p73_c2",
+        "motor_manual.pdf_p73_c4"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p16_c0",
+        "motor_manual.pdf_p16_c1",
+        "motor_manual.pdf_p73_c4",
+        "motor_manual.pdf_p73_c3",
+        "motor_manual.pdf_p18_c0",
+        "motor_manual.pdf_p16_c2",
+        "motor_manual.pdf_p73_c5",
+        "motor_manual.pdf_p73_c2",
+        "motor_manual.pdf_p18_c1"
+      ]
+    },
+    {
+      "question_id": "Q005",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p22_c0",
+        "motor_manual.pdf_p22_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p22_c0",
+        "motor_manual.pdf_p6_c3",
+        "motor_manual.pdf_p42_c4",
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p51_c2"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p22_c0",
+        "motor_manual.pdf_p6_c3",
+        "motor_manual.pdf_p42_c4",
+        "motor_manual.pdf_p44_c1",
+        "motor_manual.pdf_p22_c1"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p22_c0",
+        "motor_manual.pdf_p6_c3",
+        "motor_manual.pdf_p42_c4",
+        "motor_manual.pdf_p51_c7",
+        "motor_manual.pdf_p46_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p22_c0",
+        "motor_manual.pdf_p6_c3",
+        "motor_manual.pdf_p42_c4",
+        "motor_manual.pdf_p51_c7",
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p22_c1",
+        "motor_manual.pdf_p6_c2",
+        "motor_manual.pdf_p6_c4",
+        "motor_manual.pdf_p42_c3",
+        "motor_manual.pdf_p42_c5"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p22_c0",
+        "motor_manual.pdf_p6_c3",
+        "motor_manual.pdf_p42_c4",
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p51_c2",
+        "motor_manual.pdf_p22_c1",
+        "motor_manual.pdf_p6_c2",
+        "motor_manual.pdf_p6_c4",
+        "motor_manual.pdf_p42_c3",
+        "motor_manual.pdf_p42_c5"
+      ]
+    },
+    {
+      "question_id": "Q006",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p34_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p34_c1",
+        "motor_manual.pdf_p34_c2",
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p74_c3",
+        "motor_manual.pdf_p33_c4"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p34_c1",
+        "motor_manual.pdf_p34_c2",
+        "motor_manual.pdf_p4_c13",
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p56_c4"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p34_c1",
+        "motor_manual.pdf_p34_c2",
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p33_c4",
+        "motor_manual.pdf_p4_c13"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p34_c1",
+        "motor_manual.pdf_p34_c2",
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p33_c4",
+        "motor_manual.pdf_p4_c13",
+        "motor_manual.pdf_p34_c3",
+        "motor_manual.pdf_p33_c3",
+        "motor_manual.pdf_p4_c12",
+        "motor_manual.pdf_p4_c14"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p34_c1",
+        "motor_manual.pdf_p34_c2",
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p74_c3",
+        "motor_manual.pdf_p33_c4",
+        "motor_manual.pdf_p34_c3",
+        "motor_manual.pdf_p74_c2",
+        "motor_manual.pdf_p33_c3"
+      ]
+    },
+    {
+      "question_id": "Q007",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p40_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p40_c0",
+        "motor_manual.pdf_p40_c1",
+        "motor_manual.pdf_p38_c6",
+        "motor_manual.pdf_p38_c7",
+        "motor_manual.pdf_p4_c10"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p40_c0",
+        "motor_manual.pdf_p38_c7",
+        "motor_manual.pdf_p38_c6",
+        "motor_manual.pdf_p49_c2",
+        "motor_manual.pdf_p51_c1"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p40_c0",
+        "motor_manual.pdf_p38_c7",
+        "motor_manual.pdf_p38_c6",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p4_c10"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p40_c0",
+        "motor_manual.pdf_p38_c7",
+        "motor_manual.pdf_p38_c6",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p4_c10",
+        "motor_manual.pdf_p40_c1",
+        "motor_manual.pdf_p38_c5",
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p46_c2",
+        "motor_manual.pdf_p4_c9"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p40_c0",
+        "motor_manual.pdf_p40_c1",
+        "motor_manual.pdf_p38_c6",
+        "motor_manual.pdf_p38_c7",
+        "motor_manual.pdf_p4_c10",
+        "motor_manual.pdf_p40_c2",
+        "motor_manual.pdf_p38_c5",
+        "motor_manual.pdf_p4_c9",
+        "motor_manual.pdf_p4_c11"
+      ]
+    },
+    {
+      "question_id": "Q008",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p50_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p50_c1",
+        "motor_manual.pdf_p50_c3",
+        "motor_manual.pdf_p51_c2",
+        "motor_manual.pdf_p45_c2",
+        "motor_manual.pdf_p51_c4"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p50_c1",
+        "motor_manual.pdf_p50_c3",
+        "motor_manual.pdf_p51_c2",
+        "motor_manual.pdf_p50_c2",
+        "motor_manual.pdf_p61_c1"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p50_c1",
+        "motor_manual.pdf_p50_c3",
+        "motor_manual.pdf_p51_c2",
+        "motor_manual.pdf_p51_c4",
+        "motor_manual.pdf_p38_c6"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p50_c1",
+        "motor_manual.pdf_p50_c3",
+        "motor_manual.pdf_p51_c2",
+        "motor_manual.pdf_p51_c4",
+        "motor_manual.pdf_p38_c6",
+        "motor_manual.pdf_p50_c0",
+        "motor_manual.pdf_p50_c2",
+        "motor_manual.pdf_p50_c4",
+        "motor_manual.pdf_p51_c1",
+        "motor_manual.pdf_p51_c3"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p50_c1",
+        "motor_manual.pdf_p50_c3",
+        "motor_manual.pdf_p51_c2",
+        "motor_manual.pdf_p45_c2",
+        "motor_manual.pdf_p51_c4",
+        "motor_manual.pdf_p50_c0",
+        "motor_manual.pdf_p50_c2",
+        "motor_manual.pdf_p50_c4",
+        "motor_manual.pdf_p51_c1",
+        "motor_manual.pdf_p51_c3"
+      ]
+    },
+    {
+      "question_id": "Q009",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p58_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p58_c1",
+        "motor_manual.pdf_p58_c2",
+        "motor_manual.pdf_p58_c3",
+        "motor_manual.pdf_p58_c0",
+        "motor_manual.pdf_p36_c4"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p58_c2",
+        "motor_manual.pdf_p58_c1",
+        "motor_manual.pdf_p60_c6",
+        "motor_manual.pdf_p88_c0",
+        "motor_manual.pdf_p89_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p58_c1",
+        "motor_manual.pdf_p58_c2",
+        "motor_manual.pdf_p58_c0",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p58_c4"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p58_c1",
+        "motor_manual.pdf_p58_c2",
+        "motor_manual.pdf_p58_c0",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p58_c4",
+        "motor_manual.pdf_p58_c3",
+        "motor_manual.pdf_p36_c3",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p58_c5"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p58_c1",
+        "motor_manual.pdf_p58_c2",
+        "motor_manual.pdf_p58_c3",
+        "motor_manual.pdf_p58_c0",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p58_c4",
+        "motor_manual.pdf_p36_c3",
+        "motor_manual.pdf_p36_c5"
+      ]
+    },
+    {
+      "question_id": "Q010",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p63_c0",
+        "motor_manual.pdf_p63_c1",
+        "motor_manual.pdf_p63_c2"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p63_c0",
+        "motor_manual.pdf_p96_c0",
+        "motor_manual.pdf_p66_c0",
+        "motor_manual.pdf_p63_c2",
+        "motor_manual.pdf_p57_c2"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p63_c0",
+        "motor_manual.pdf_p96_c0",
+        "motor_manual.pdf_p18_c7",
+        "motor_manual.pdf_p1_c0",
+        "motor_manual.pdf_p3_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p63_c0",
+        "motor_manual.pdf_p96_c0",
+        "motor_manual.pdf_p63_c1",
+        "motor_manual.pdf_p3_c0",
+        "motor_manual.pdf_p32_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p63_c0",
+        "motor_manual.pdf_p96_c0",
+        "motor_manual.pdf_p63_c1",
+        "motor_manual.pdf_p3_c0",
+        "motor_manual.pdf_p32_c0",
+        "motor_manual.pdf_p63_c2",
+        "motor_manual.pdf_p3_c1",
+        "motor_manual.pdf_p32_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p63_c0",
+        "motor_manual.pdf_p96_c0",
+        "motor_manual.pdf_p66_c0",
+        "motor_manual.pdf_p63_c2",
+        "motor_manual.pdf_p57_c2",
+        "motor_manual.pdf_p63_c1",
+        "motor_manual.pdf_p66_c1",
+        "motor_manual.pdf_p63_c3",
+        "motor_manual.pdf_p57_c1",
+        "motor_manual.pdf_p57_c3"
+      ]
+    },
+    {
+      "question_id": "Q011",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p12_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p61_c0",
+        "motor_manual.pdf_p61_c2",
+        "motor_manual.pdf_p32_c1",
+        "motor_manual.pdf_p52_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p33_c1",
+        "motor_manual.pdf_p61_c2",
+        "motor_manual.pdf_p60_c6",
+        "motor_manual.pdf_p73_c4"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p61_c2",
+        "motor_manual.pdf_p61_c3",
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p61_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p61_c2",
+        "motor_manual.pdf_p61_c3",
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p61_c0",
+        "motor_manual.pdf_p61_c1",
+        "motor_manual.pdf_p61_c4",
+        "motor_manual.pdf_p33_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p61_c0",
+        "motor_manual.pdf_p61_c2",
+        "motor_manual.pdf_p32_c1",
+        "motor_manual.pdf_p52_c0",
+        "motor_manual.pdf_p61_c1",
+        "motor_manual.pdf_p61_c3",
+        "motor_manual.pdf_p32_c0",
+        "motor_manual.pdf_p32_c2",
+        "motor_manual.pdf_p52_c1"
+      ]
+    },
+    {
+      "question_id": "Q012",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p19_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p19_c1",
+        "motor_manual.pdf_p19_c2",
+        "motor_manual.pdf_p45_c3",
+        "motor_manual.pdf_p45_c0",
+        "motor_manual.pdf_p19_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p19_c1",
+        "motor_manual.pdf_p51_c6",
+        "motor_manual.pdf_p46_c2",
+        "motor_manual.pdf_p27_c2",
+        "motor_manual.pdf_p51_c7"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p19_c1",
+        "motor_manual.pdf_p51_c6",
+        "motor_manual.pdf_p51_c7",
+        "motor_manual.pdf_p45_c3",
+        "motor_manual.pdf_p19_c2"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p19_c1",
+        "motor_manual.pdf_p51_c6",
+        "motor_manual.pdf_p51_c7",
+        "motor_manual.pdf_p45_c3",
+        "motor_manual.pdf_p19_c2",
+        "motor_manual.pdf_p19_c0",
+        "motor_manual.pdf_p51_c5",
+        "motor_manual.pdf_p45_c2",
+        "motor_manual.pdf_p45_c4",
+        "motor_manual.pdf_p19_c3"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p19_c1",
+        "motor_manual.pdf_p19_c2",
+        "motor_manual.pdf_p45_c3",
+        "motor_manual.pdf_p45_c0",
+        "motor_manual.pdf_p19_c0",
+        "motor_manual.pdf_p19_c3",
+        "motor_manual.pdf_p45_c2",
+        "motor_manual.pdf_p45_c4",
+        "motor_manual.pdf_p45_c1"
+      ]
+    },
+    {
+      "question_id": "Q013",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p25_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p47_c4",
+        "motor_manual.pdf_p49_c2",
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p47_c2"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p49_c2",
+        "motor_manual.pdf_p25_c1",
+        "motor_manual.pdf_p23_c2"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p49_c2",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p23_c2",
+        "motor_manual.pdf_p25_c1"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p49_c2",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p23_c2",
+        "motor_manual.pdf_p25_c1",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p49_c3",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p47_c4",
+        "motor_manual.pdf_p23_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p47_c4",
+        "motor_manual.pdf_p49_c2",
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p47_c5",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p49_c3",
+        "motor_manual.pdf_p23_c2",
+        "motor_manual.pdf_p47_c1"
+      ]
+    },
+    {
+      "question_id": "Q014",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p32_c0",
+        "motor_manual.pdf_p32_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p32_c1",
+        "motor_manual.pdf_p32_c0",
+        "motor_manual.pdf_p31_c4",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p32_c2"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p32_c1",
+        "motor_manual.pdf_p32_c0",
+        "motor_manual.pdf_p32_c2",
+        "motor_manual.pdf_p13_c1",
+        "motor_manual.pdf_p29_c3"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p32_c1",
+        "motor_manual.pdf_p32_c0",
+        "motor_manual.pdf_p32_c2",
+        "motor_manual.pdf_p31_c4",
+        "motor_manual.pdf_p29_c3"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p32_c1",
+        "motor_manual.pdf_p32_c0",
+        "motor_manual.pdf_p32_c2",
+        "motor_manual.pdf_p31_c4",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p32_c3",
+        "motor_manual.pdf_p31_c3",
+        "motor_manual.pdf_p31_c5",
+        "motor_manual.pdf_p29_c2",
+        "motor_manual.pdf_p29_c4"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p32_c1",
+        "motor_manual.pdf_p32_c0",
+        "motor_manual.pdf_p31_c4",
+        "motor_manual.pdf_p29_c3",
+        "motor_manual.pdf_p32_c2",
+        "motor_manual.pdf_p31_c3",
+        "motor_manual.pdf_p31_c5",
+        "motor_manual.pdf_p29_c2",
+        "motor_manual.pdf_p29_c4",
+        "motor_manual.pdf_p32_c3"
+      ]
+    },
+    {
+      "question_id": "Q015",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p37_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p36_c6",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p37_c0",
+        "motor_manual.pdf_p58_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p37_c0",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p36_c6",
+        "motor_manual.pdf_p35_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p36_c6",
+        "motor_manual.pdf_p37_c0",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p35_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p36_c6",
+        "motor_manual.pdf_p37_c0",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p35_c0",
+        "motor_manual.pdf_p37_c1",
+        "motor_manual.pdf_p36_c3",
+        "motor_manual.pdf_p35_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p36_c6",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p37_c0",
+        "motor_manual.pdf_p58_c0",
+        "motor_manual.pdf_p36_c3",
+        "motor_manual.pdf_p37_c1",
+        "motor_manual.pdf_p58_c1"
+      ]
+    },
+    {
+      "question_id": "Q016",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p37_c1",
+        "motor_manual.pdf_p65_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p65_c0",
+        "motor_manual.pdf_p36_c0",
+        "motor_manual.pdf_p36_c2",
+        "motor_manual.pdf_p36_c3",
+        "motor_manual.pdf_p64_c5"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p37_c1",
+        "motor_manual.pdf_p64_c5",
+        "motor_manual.pdf_p87_c1",
+        "motor_manual.pdf_p89_c0",
+        "motor_manual.pdf_p55_c4"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p64_c5",
+        "motor_manual.pdf_p65_c0",
+        "motor_manual.pdf_p37_c1",
+        "motor_manual.pdf_p36_c0",
+        "motor_manual.pdf_p37_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p64_c5",
+        "motor_manual.pdf_p65_c0",
+        "motor_manual.pdf_p37_c1",
+        "motor_manual.pdf_p36_c0",
+        "motor_manual.pdf_p37_c0",
+        "motor_manual.pdf_p64_c4",
+        "motor_manual.pdf_p65_c1",
+        "motor_manual.pdf_p37_c2",
+        "motor_manual.pdf_p36_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p65_c0",
+        "motor_manual.pdf_p36_c0",
+        "motor_manual.pdf_p36_c2",
+        "motor_manual.pdf_p36_c3",
+        "motor_manual.pdf_p64_c5",
+        "motor_manual.pdf_p65_c1",
+        "motor_manual.pdf_p36_c1",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p64_c4"
+      ]
+    },
+    {
+      "question_id": "Q018",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p14_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p14_c0",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p21_c2",
+        "motor_manual.pdf_p20_c2"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p14_c0",
+        "motor_manual.pdf_p20_c2",
+        "motor_manual.pdf_p20_c3",
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p26_c5"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p14_c0",
+        "motor_manual.pdf_p20_c2",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p20_c3",
+        "motor_manual.pdf_p49_c1"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p14_c0",
+        "motor_manual.pdf_p20_c2",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p20_c3",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p14_c1",
+        "motor_manual.pdf_p20_c1",
+        "motor_manual.pdf_p47_c1",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p20_c4"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p14_c0",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p21_c2",
+        "motor_manual.pdf_p20_c2",
+        "motor_manual.pdf_p14_c1",
+        "motor_manual.pdf_p47_c1",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p21_c1"
+      ]
+    },
+    {
+      "question_id": "Q019",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p21_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p21_c1",
+        "motor_manual.pdf_p49_c0",
+        "motor_manual.pdf_p48_c5",
+        "motor_manual.pdf_p7_c3",
+        "motor_manual.pdf_p21_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p21_c1",
+        "motor_manual.pdf_p49_c0",
+        "motor_manual.pdf_p47_c0",
+        "motor_manual.pdf_p47_c1",
+        "motor_manual.pdf_p20_c1"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p21_c1",
+        "motor_manual.pdf_p49_c0",
+        "motor_manual.pdf_p47_c0",
+        "motor_manual.pdf_p47_c1",
+        "motor_manual.pdf_p21_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p21_c1",
+        "motor_manual.pdf_p49_c0",
+        "motor_manual.pdf_p47_c0",
+        "motor_manual.pdf_p47_c1",
+        "motor_manual.pdf_p21_c0",
+        "motor_manual.pdf_p21_c2",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p47_c2"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p21_c1",
+        "motor_manual.pdf_p49_c0",
+        "motor_manual.pdf_p48_c5",
+        "motor_manual.pdf_p7_c3",
+        "motor_manual.pdf_p21_c0",
+        "motor_manual.pdf_p21_c2",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p48_c4",
+        "motor_manual.pdf_p48_c6",
+        "motor_manual.pdf_p7_c2"
+      ]
+    },
+    {
+      "question_id": "Q020",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p26_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p25_c5",
+        "motor_manual.pdf_p14_c0",
+        "motor_manual.pdf_p25_c4"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p55_c3",
+        "motor_manual.pdf_p52_c1",
+        "motor_manual.pdf_p40_c2",
+        "motor_manual.pdf_p19_c1"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p40_c2",
+        "motor_manual.pdf_p13_c3",
+        "motor_manual.pdf_p23_c1"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p40_c2",
+        "motor_manual.pdf_p13_c3",
+        "motor_manual.pdf_p23_c1",
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p28_c0",
+        "motor_manual.pdf_p28_c2",
+        "motor_manual.pdf_p40_c1",
+        "motor_manual.pdf_p40_c3"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p25_c5",
+        "motor_manual.pdf_p14_c0",
+        "motor_manual.pdf_p25_c4",
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p28_c0",
+        "motor_manual.pdf_p28_c2",
+        "motor_manual.pdf_p14_c1",
+        "motor_manual.pdf_p25_c3"
+      ]
+    },
+    {
+      "question_id": "Q021",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p26_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p49_c3"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p47_c8",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p26_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p26_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p26_c2",
+        "motor_manual.pdf_p47_c4",
+        "motor_manual.pdf_p47_c1",
+        "motor_manual.pdf_p49_c0",
+        "motor_manual.pdf_p49_c2"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p47_c3",
+        "motor_manual.pdf_p26_c1",
+        "motor_manual.pdf_p49_c1",
+        "motor_manual.pdf_p47_c2",
+        "motor_manual.pdf_p49_c3",
+        "motor_manual.pdf_p47_c4",
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p26_c2",
+        "motor_manual.pdf_p49_c0",
+        "motor_manual.pdf_p49_c2"
+      ]
+    },
+    {
+      "question_id": "Q022",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p33_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p61_c0",
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p31_c4",
+        "motor_manual.pdf_p61_c1"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p26_c6",
+        "motor_manual.pdf_p87_c0",
+        "motor_manual.pdf_p55_c6"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p70_c0",
+        "motor_manual.pdf_p11_c3",
+        "motor_manual.pdf_p61_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p70_c0",
+        "motor_manual.pdf_p11_c3",
+        "motor_manual.pdf_p61_c0",
+        "motor_manual.pdf_p33_c1",
+        "motor_manual.pdf_p70_c1",
+        "motor_manual.pdf_p11_c2",
+        "motor_manual.pdf_p11_c4",
+        "motor_manual.pdf_p61_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p61_c0",
+        "motor_manual.pdf_p12_c0",
+        "motor_manual.pdf_p31_c4",
+        "motor_manual.pdf_p61_c1",
+        "motor_manual.pdf_p33_c1",
+        "motor_manual.pdf_p31_c3",
+        "motor_manual.pdf_p31_c5",
+        "motor_manual.pdf_p61_c2"
+      ]
+    },
+    {
+      "question_id": "Q023",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p33_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p33_c4",
+        "motor_manual.pdf_p33_c1",
+        "motor_manual.pdf_p27_c1",
+        "motor_manual.pdf_p69_c0",
+        "motor_manual.pdf_p34_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p33_c1",
+        "motor_manual.pdf_p25_c2",
+        "motor_manual.pdf_p33_c2",
+        "motor_manual.pdf_p42_c4",
+        "motor_manual.pdf_p32_c3"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p33_c1",
+        "motor_manual.pdf_p69_c0",
+        "motor_manual.pdf_p27_c1",
+        "motor_manual.pdf_p27_c2",
+        "motor_manual.pdf_p32_c3"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p33_c1",
+        "motor_manual.pdf_p69_c0",
+        "motor_manual.pdf_p27_c1",
+        "motor_manual.pdf_p27_c2",
+        "motor_manual.pdf_p32_c3",
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p33_c2",
+        "motor_manual.pdf_p69_c1",
+        "motor_manual.pdf_p27_c0",
+        "motor_manual.pdf_p27_c3"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p33_c4",
+        "motor_manual.pdf_p33_c1",
+        "motor_manual.pdf_p27_c1",
+        "motor_manual.pdf_p69_c0",
+        "motor_manual.pdf_p34_c0",
+        "motor_manual.pdf_p33_c3",
+        "motor_manual.pdf_p33_c0",
+        "motor_manual.pdf_p33_c2",
+        "motor_manual.pdf_p27_c0",
+        "motor_manual.pdf_p27_c2"
+      ]
+    },
+    {
+      "question_id": "Q024",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p39_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p39_c0",
+        "motor_manual.pdf_p5_c10",
+        "motor_manual.pdf_p33_c4",
+        "motor_manual.pdf_p56_c6",
+        "motor_manual.pdf_p56_c7"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p5_c10",
+        "motor_manual.pdf_p5_c9",
+        "motor_manual.pdf_p39_c0",
+        "motor_manual.pdf_p38_c2",
+        "motor_manual.pdf_p90_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p5_c10",
+        "motor_manual.pdf_p39_c0",
+        "motor_manual.pdf_p32_c2",
+        "motor_manual.pdf_p34_c1",
+        "motor_manual.pdf_p5_c9"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p5_c10",
+        "motor_manual.pdf_p39_c0",
+        "motor_manual.pdf_p32_c2",
+        "motor_manual.pdf_p34_c1",
+        "motor_manual.pdf_p5_c9",
+        "motor_manual.pdf_p5_c11",
+        "motor_manual.pdf_p39_c1",
+        "motor_manual.pdf_p32_c1",
+        "motor_manual.pdf_p32_c3",
+        "motor_manual.pdf_p34_c0"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p39_c0",
+        "motor_manual.pdf_p5_c10",
+        "motor_manual.pdf_p33_c4",
+        "motor_manual.pdf_p56_c6",
+        "motor_manual.pdf_p56_c7",
+        "motor_manual.pdf_p39_c1",
+        "motor_manual.pdf_p5_c9",
+        "motor_manual.pdf_p5_c11",
+        "motor_manual.pdf_p33_c3",
+        "motor_manual.pdf_p56_c5"
+      ]
+    },
+    {
+      "question_id": "Q025",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p53_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p53_c1",
+        "motor_manual.pdf_p8_c0",
+        "motor_manual.pdf_p53_c0",
+        "motor_manual.pdf_p53_c5",
+        "motor_manual.pdf_p5_c9"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p53_c1",
+        "motor_manual.pdf_p52_c5",
+        "motor_manual.pdf_p65_c4",
+        "motor_manual.pdf_p53_c0",
+        "motor_manual.pdf_p53_c5"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p53_c1",
+        "motor_manual.pdf_p53_c0",
+        "motor_manual.pdf_p53_c5",
+        "motor_manual.pdf_p52_c6",
+        "motor_manual.pdf_p49_c5"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p53_c1",
+        "motor_manual.pdf_p53_c0",
+        "motor_manual.pdf_p53_c5",
+        "motor_manual.pdf_p52_c6",
+        "motor_manual.pdf_p49_c5",
+        "motor_manual.pdf_p53_c2",
+        "motor_manual.pdf_p53_c4",
+        "motor_manual.pdf_p52_c5",
+        "motor_manual.pdf_p49_c4",
+        "motor_manual.pdf_p49_c6"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p53_c1",
+        "motor_manual.pdf_p8_c0",
+        "motor_manual.pdf_p53_c0",
+        "motor_manual.pdf_p53_c5",
+        "motor_manual.pdf_p5_c9",
+        "motor_manual.pdf_p53_c2",
+        "motor_manual.pdf_p8_c1",
+        "motor_manual.pdf_p53_c4",
+        "motor_manual.pdf_p5_c8",
+        "motor_manual.pdf_p5_c10"
+      ]
+    },
+    {
+      "question_id": "Q027",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p15_c0",
+        "motor_manual.pdf_p15_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p15_c1",
+        "motor_manual.pdf_p15_c0",
+        "motor_manual.pdf_p5_c8",
+        "motor_manual.pdf_p8_c4",
+        "motor_manual.pdf_p8_c5"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p15_c0",
+        "motor_manual.pdf_p87_c0",
+        "motor_manual.pdf_p18_c6",
+        "motor_manual.pdf_p15_c1",
+        "motor_manual.pdf_p18_c5"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p15_c0",
+        "motor_manual.pdf_p15_c1",
+        "motor_manual.pdf_p16_c3",
+        "motor_manual.pdf_p18_c6",
+        "motor_manual.pdf_p52_c3"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p15_c0",
+        "motor_manual.pdf_p15_c1",
+        "motor_manual.pdf_p16_c3",
+        "motor_manual.pdf_p18_c6",
+        "motor_manual.pdf_p52_c3",
+        "motor_manual.pdf_p15_c2",
+        "motor_manual.pdf_p16_c2",
+        "motor_manual.pdf_p16_c4",
+        "motor_manual.pdf_p18_c5",
+        "motor_manual.pdf_p18_c7"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p15_c1",
+        "motor_manual.pdf_p15_c0",
+        "motor_manual.pdf_p5_c8",
+        "motor_manual.pdf_p8_c4",
+        "motor_manual.pdf_p8_c5",
+        "motor_manual.pdf_p15_c2",
+        "motor_manual.pdf_p5_c7",
+        "motor_manual.pdf_p5_c9",
+        "motor_manual.pdf_p8_c3",
+        "motor_manual.pdf_p8_c6"
+      ]
+    },
+    {
+      "question_id": "Q028",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p17_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p16_c6",
+        "motor_manual.pdf_p16_c5",
+        "motor_manual.pdf_p9_c2",
+        "motor_manual.pdf_p20_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p17_c1",
+        "motor_manual.pdf_p18_c2",
+        "motor_manual.pdf_p89_c0",
+        "motor_manual.pdf_p16_c5"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p16_c5",
+        "motor_manual.pdf_p16_c6",
+        "motor_manual.pdf_p17_c1",
+        "motor_manual.pdf_p20_c0"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p16_c5",
+        "motor_manual.pdf_p16_c6",
+        "motor_manual.pdf_p17_c1",
+        "motor_manual.pdf_p20_c0",
+        "motor_manual.pdf_p16_c4",
+        "motor_manual.pdf_p16_c7",
+        "motor_manual.pdf_p17_c2",
+        "motor_manual.pdf_p20_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p16_c6",
+        "motor_manual.pdf_p16_c5",
+        "motor_manual.pdf_p9_c2",
+        "motor_manual.pdf_p20_c0",
+        "motor_manual.pdf_p17_c1",
+        "motor_manual.pdf_p16_c7",
+        "motor_manual.pdf_p16_c4",
+        "motor_manual.pdf_p9_c1",
+        "motor_manual.pdf_p9_c3"
+      ]
+    },
+    {
+      "question_id": "Q029",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p20_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p20_c0",
+        "motor_manual.pdf_p20_c1",
+        "motor_manual.pdf_p20_c4",
+        "motor_manual.pdf_p48_c0",
+        "motor_manual.pdf_p5_c8"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p20_c0",
+        "motor_manual.pdf_p16_c4",
+        "motor_manual.pdf_p16_c3",
+        "motor_manual.pdf_p15_c2",
+        "motor_manual.pdf_p43_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p20_c0",
+        "motor_manual.pdf_p20_c4",
+        "motor_manual.pdf_p48_c0",
+        "motor_manual.pdf_p47_c0",
+        "motor_manual.pdf_p20_c1"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p20_c0",
+        "motor_manual.pdf_p20_c4",
+        "motor_manual.pdf_p48_c0",
+        "motor_manual.pdf_p47_c0",
+        "motor_manual.pdf_p20_c1",
+        "motor_manual.pdf_p20_c3",
+        "motor_manual.pdf_p20_c5",
+        "motor_manual.pdf_p48_c1",
+        "motor_manual.pdf_p47_c1",
+        "motor_manual.pdf_p20_c2"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p20_c0",
+        "motor_manual.pdf_p20_c1",
+        "motor_manual.pdf_p20_c4",
+        "motor_manual.pdf_p48_c0",
+        "motor_manual.pdf_p5_c8",
+        "motor_manual.pdf_p20_c2",
+        "motor_manual.pdf_p20_c3",
+        "motor_manual.pdf_p20_c5",
+        "motor_manual.pdf_p48_c1",
+        "motor_manual.pdf_p5_c7"
+      ]
+    },
+    {
+      "question_id": "Q030",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p24_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p23_c2",
+        "motor_manual.pdf_p25_c0",
+        "motor_manual.pdf_p24_c2",
+        "motor_manual.pdf_p24_c0"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p20_c2",
+        "motor_manual.pdf_p25_c1",
+        "motor_manual.pdf_p25_c0",
+        "motor_manual.pdf_p21_c0",
+        "motor_manual.pdf_p23_c2"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p25_c0",
+        "motor_manual.pdf_p23_c2",
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p20_c2",
+        "motor_manual.pdf_p25_c1"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p25_c0",
+        "motor_manual.pdf_p23_c2",
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p20_c2",
+        "motor_manual.pdf_p25_c1",
+        "motor_manual.pdf_p23_c1",
+        "motor_manual.pdf_p20_c1",
+        "motor_manual.pdf_p20_c3",
+        "motor_manual.pdf_p25_c2"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p23_c3",
+        "motor_manual.pdf_p23_c2",
+        "motor_manual.pdf_p25_c0",
+        "motor_manual.pdf_p24_c2",
+        "motor_manual.pdf_p24_c0",
+        "motor_manual.pdf_p23_c1",
+        "motor_manual.pdf_p25_c1",
+        "motor_manual.pdf_p24_c1"
+      ]
+    },
+    {
+      "question_id": "Q031",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p28_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p14_c4",
+        "motor_manual.pdf_p43_c1",
+        "motor_manual.pdf_p4_c7",
+        "motor_manual.pdf_p27_c4"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p58_c2",
+        "motor_manual.pdf_p26_c0",
+        "motor_manual.pdf_p13_c3",
+        "motor_manual.pdf_p42_c4"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p13_c2",
+        "motor_manual.pdf_p41_c3",
+        "motor_manual.pdf_p14_c4",
+        "motor_manual.pdf_p58_c2"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p13_c2",
+        "motor_manual.pdf_p41_c3",
+        "motor_manual.pdf_p14_c4",
+        "motor_manual.pdf_p58_c2",
+        "motor_manual.pdf_p28_c0",
+        "motor_manual.pdf_p28_c2",
+        "motor_manual.pdf_p13_c1",
+        "motor_manual.pdf_p13_c3",
+        "motor_manual.pdf_p41_c2"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p28_c1",
+        "motor_manual.pdf_p14_c4",
+        "motor_manual.pdf_p43_c1",
+        "motor_manual.pdf_p4_c7",
+        "motor_manual.pdf_p27_c4",
+        "motor_manual.pdf_p28_c0",
+        "motor_manual.pdf_p28_c2",
+        "motor_manual.pdf_p14_c3",
+        "motor_manual.pdf_p14_c5",
+        "motor_manual.pdf_p43_c0"
+      ]
+    },
+    {
+      "question_id": "Q032",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p35_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p57_c5",
+        "motor_manual.pdf_p35_c0",
+        "motor_manual.pdf_p57_c6",
+        "motor_manual.pdf_p34_c3"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p35_c0",
+        "motor_manual.pdf_p37_c2",
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p35_c1"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p35_c0",
+        "motor_manual.pdf_p37_c2",
+        "motor_manual.pdf_p57_c6",
+        "motor_manual.pdf_p35_c1"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p35_c0",
+        "motor_manual.pdf_p37_c2",
+        "motor_manual.pdf_p57_c6",
+        "motor_manual.pdf_p35_c1",
+        "motor_manual.pdf_p36_c3",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p37_c1",
+        "motor_manual.pdf_p37_c3",
+        "motor_manual.pdf_p57_c5"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p36_c4",
+        "motor_manual.pdf_p57_c5",
+        "motor_manual.pdf_p35_c0",
+        "motor_manual.pdf_p57_c6",
+        "motor_manual.pdf_p34_c3",
+        "motor_manual.pdf_p36_c3",
+        "motor_manual.pdf_p36_c5",
+        "motor_manual.pdf_p57_c4",
+        "motor_manual.pdf_p35_c1",
+        "motor_manual.pdf_p57_c7"
+      ]
+    },
+    {
+      "question_id": "Q033",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p38_c0",
+        "motor_manual.pdf_p38_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p38_c0",
+        "motor_manual.pdf_p46_c2",
+        "motor_manual.pdf_p41_c7",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p38_c3"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p38_c0",
+        "motor_manual.pdf_p38_c1",
+        "motor_manual.pdf_p38_c5",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p46_c2"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p38_c0",
+        "motor_manual.pdf_p46_c2",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p38_c5",
+        "motor_manual.pdf_p38_c1"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p38_c0",
+        "motor_manual.pdf_p46_c2",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p38_c5",
+        "motor_manual.pdf_p38_c1",
+        "motor_manual.pdf_p46_c3",
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p38_c4",
+        "motor_manual.pdf_p38_c6",
+        "motor_manual.pdf_p38_c2"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p38_c0",
+        "motor_manual.pdf_p46_c2",
+        "motor_manual.pdf_p41_c7",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p38_c3",
+        "motor_manual.pdf_p38_c1",
+        "motor_manual.pdf_p46_c3",
+        "motor_manual.pdf_p41_c6",
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p38_c2"
+      ]
+    },
+    {
+      "question_id": "Q034",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p46_c0"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p45_c5",
+        "motor_manual.pdf_p39_c1",
+        "motor_manual.pdf_p49_c5",
+        "motor_manual.pdf_p46_c1"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p41_c3",
+        "motor_manual.pdf_p45_c5",
+        "motor_manual.pdf_p6_c3",
+        "motor_manual.pdf_p49_c2"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p45_c5",
+        "motor_manual.pdf_p41_c3",
+        "motor_manual.pdf_p49_c5",
+        "motor_manual.pdf_p40_c6"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p45_c5",
+        "motor_manual.pdf_p41_c3",
+        "motor_manual.pdf_p49_c5",
+        "motor_manual.pdf_p40_c6",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p45_c4",
+        "motor_manual.pdf_p45_c6",
+        "motor_manual.pdf_p41_c2",
+        "motor_manual.pdf_p41_c4"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p46_c0",
+        "motor_manual.pdf_p45_c5",
+        "motor_manual.pdf_p39_c1",
+        "motor_manual.pdf_p49_c5",
+        "motor_manual.pdf_p46_c1",
+        "motor_manual.pdf_p45_c4",
+        "motor_manual.pdf_p45_c6",
+        "motor_manual.pdf_p39_c0",
+        "motor_manual.pdf_p49_c4",
+        "motor_manual.pdf_p49_c6"
+      ]
+    },
+    {
+      "question_id": "Q037",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p18_c0",
+        "motor_manual.pdf_p18_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p18_c0",
+        "motor_manual.pdf_p20_c5",
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p18_c1",
+        "motor_manual.pdf_p21_c4"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p18_c0",
+        "motor_manual.pdf_p20_c5",
+        "motor_manual.pdf_p18_c3",
+        "motor_manual.pdf_p21_c5",
+        "motor_manual.pdf_p89_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p18_c0",
+        "motor_manual.pdf_p20_c5",
+        "motor_manual.pdf_p21_c4",
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p21_c5"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p18_c0",
+        "motor_manual.pdf_p20_c5",
+        "motor_manual.pdf_p21_c4",
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p21_c5",
+        "motor_manual.pdf_p18_c1",
+        "motor_manual.pdf_p20_c4",
+        "motor_manual.pdf_p20_c6",
+        "motor_manual.pdf_p21_c3",
+        "motor_manual.pdf_p17_c1"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p18_c0",
+        "motor_manual.pdf_p20_c5",
+        "motor_manual.pdf_p17_c0",
+        "motor_manual.pdf_p18_c1",
+        "motor_manual.pdf_p21_c4",
+        "motor_manual.pdf_p20_c4",
+        "motor_manual.pdf_p20_c6",
+        "motor_manual.pdf_p17_c1",
+        "motor_manual.pdf_p18_c2",
+        "motor_manual.pdf_p21_c3"
+      ]
+    },
+    {
+      "question_id": "Q038",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p41_c0",
+        "motor_manual.pdf_p41_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p41_c0",
+        "motor_manual.pdf_p41_c1",
+        "motor_manual.pdf_p40_c5",
+        "motor_manual.pdf_p5_c9",
+        "motor_manual.pdf_p40_c4"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p41_c1",
+        "motor_manual.pdf_p41_c0",
+        "motor_manual.pdf_p8_c6",
+        "motor_manual.pdf_p21_c2",
+        "motor_manual.pdf_p60_c1"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p41_c0",
+        "motor_manual.pdf_p41_c1",
+        "motor_manual.pdf_p40_c4",
+        "motor_manual.pdf_p32_c5",
+        "motor_manual.pdf_p40_c5"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p41_c0",
+        "motor_manual.pdf_p41_c1",
+        "motor_manual.pdf_p40_c4",
+        "motor_manual.pdf_p32_c5",
+        "motor_manual.pdf_p40_c5",
+        "motor_manual.pdf_p41_c2",
+        "motor_manual.pdf_p40_c3",
+        "motor_manual.pdf_p32_c4",
+        "motor_manual.pdf_p40_c6"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p41_c0",
+        "motor_manual.pdf_p41_c1",
+        "motor_manual.pdf_p40_c5",
+        "motor_manual.pdf_p5_c9",
+        "motor_manual.pdf_p40_c4",
+        "motor_manual.pdf_p41_c2",
+        "motor_manual.pdf_p40_c6",
+        "motor_manual.pdf_p5_c8",
+        "motor_manual.pdf_p5_c10",
+        "motor_manual.pdf_p40_c3"
+      ]
+    },
+    {
+      "question_id": "Q039",
+      "relevant_chunk_ids": [
+        "motor_manual.pdf_p54_c1"
+      ],
+      "faiss": [
+        "motor_manual.pdf_p54_c1",
+        "motor_manual.pdf_p52_c1",
+        "motor_manual.pdf_p52_c0",
+        "motor_manual.pdf_p51_c1",
+        "motor_manual.pdf_p55_c3"
+      ],
+      "bm25": [
+        "motor_manual.pdf_p19_c2",
+        "motor_manual.pdf_p51_c4",
+        "motor_manual.pdf_p26_c6",
+        "motor_manual.pdf_p51_c0",
+        "motor_manual.pdf_p33_c0"
+      ],
+      "hybrid": [
+        "motor_manual.pdf_p54_c1",
+        "motor_manual.pdf_p51_c0",
+        "motor_manual.pdf_p52_c0",
+        "motor_manual.pdf_p51_c4",
+        "motor_manual.pdf_p51_c1"
+      ],
+      "expanded_context": [
+        "motor_manual.pdf_p54_c1",
+        "motor_manual.pdf_p51_c0",
+        "motor_manual.pdf_p52_c0",
+        "motor_manual.pdf_p51_c4",
+        "motor_manual.pdf_p51_c1",
+        "motor_manual.pdf_p54_c0",
+        "motor_manual.pdf_p54_c2",
+        "motor_manual.pdf_p52_c1",
+        "motor_manual.pdf_p51_c3",
+        "motor_manual.pdf_p51_c5"
+      ],
+      "faiss_expanded_context": [
+        "motor_manual.pdf_p54_c1",
+        "motor_manual.pdf_p52_c1",
+        "motor_manual.pdf_p52_c0",
+        "motor_manual.pdf_p51_c1",
+        "motor_manual.pdf_p55_c3",
+        "motor_manual.pdf_p54_c0",
+        "motor_manual.pdf_p54_c2",
+        "motor_manual.pdf_p52_c2",
+        "motor_manual.pdf_p51_c0",
+        "motor_manual.pdf_p51_c2"
+      ]
+    }
+  ]
+}
